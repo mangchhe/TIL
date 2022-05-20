@@ -48,6 +48,7 @@ Mysql에서는 트랜잭션마다 ID를 부여하고 트랜잭션 ID보다 작�
 ### Serializable
 
 가장 높은 고립 수준을 가지며 발생할 수 있는 모든 문제점이 발생하지 않지만, 동시성 처리 떄문에 속도가 느리다.
+선행 트랜잭션이 특정 테이블을 읽는 경우 공유 잠금을 걸어, 다른 트랜잭션에서 해당 테이블의 데이터를 UPDATE, DELETE, INSERT 작업을 하지 못하게 한다.
 
 ![image](https://user-images.githubusercontent.com/50051656/169473680-664f61bd-3538-4f93-8a26-662452b398b5.png)
 

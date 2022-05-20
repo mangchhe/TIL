@@ -9,11 +9,22 @@
 - 어떤 트랜잭션이 데이터(row)를 사용하고 있을 때 트랜잭션이 완료되기 전까지 다른 트랜잭션은 읽거나 쓰지 못하게 하기 위해 사용한다.
 - exclusive lock이 걸리면 해당 트랜잭션에는 다른 트랜잭션이 exclusive, shared lock을 걸 수 없다.
 
+```sql
+SELECT * FROM table ... FOR UPDATE;
+```
+
 ## Shared Lock (공유 잠금)
 
 - 어떤 트랜잭션이 데이터(row)를 읽고 있을 때 다른 트랜잭션이 해당 데이터를 쓰지 못하게 하기 위해 사용한다.
 - 단, 서로 다른 트랜잭션이 데이터를 읽는 것은 가능하다.
 - shared lock이 걸리면 다른 트랜잭션은 exclusive를 걸 수 없고 shared lock은 가능하다.
+
+```sql
+# 5.7
+SELECT * FROM table ... LOCK IN SHARE MODE;
+# 8.x
+SELECT * FROM table ... FOR SHARE;
+```
 
 ## Reference
 
