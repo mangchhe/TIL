@@ -84,6 +84,7 @@ public class TestService {
 ```java
 @Configuration
 public class AppConfig {
+	
 	@Bean
 	public RetryTemplate retryTemplate() {
 		RetryTemplate retryTemplate = new RetryTemplate();
@@ -115,6 +116,9 @@ public class TestController {
 	public void test() {
 		try {
 			retryTemplate.execute(
+				/*
+				RetryCallback이 함수형 인터페이스라 람다 표현식으로도 가능
+				*/
 				new RetryCallback<Void, Exception>() {
 					  @Override
 					  public Void doWithRetry(RetryContext context) throws Exception {
