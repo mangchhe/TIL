@@ -2,7 +2,7 @@
 
 ## Spring
 
-- [Retryable, Recover 어노테이션 사용법][retryable-recover-annotation]
+- [Retryable, Recover 사용법][retryable-recover-basic]
 
 ## DB
 
@@ -11,7 +11,7 @@
 - [Optimistic Lock, Pessimistic Lock][optimistic-pessimistic-lock]
 
 [spring]: ./spring
-[retryable-recover-annotation]: ./spring/retryable-recover-annotation.md
+[retryable-recover-basic]: ./spring/retryable-recover-basic.md
 
 [db]: ./database
 [exclusive-shared-lock]: ./database/exclusive-shared-lock.md
