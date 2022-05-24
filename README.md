@@ -2,6 +2,7 @@
 
 ## Spring
 
+- [Multi Module with Gradle][multi-module-with-gradle]
 - [Retryable, Recover 사용법][retryable-recover-basic]
 
 ## DB
@@ -11,6 +12,7 @@
 - [Optimistic Lock, Pessimistic Lock][optimistic-pessimistic-lock]
 
 [spring]: ./spring
+[multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
 [retryable-recover-basic]: ./spring/retryable-recover-basic.md
 
 [db]: ./database
