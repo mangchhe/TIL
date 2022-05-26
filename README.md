@@ -4,6 +4,7 @@
 
 - [Multi Module with Gradle][multi-module-with-gradle]
 - [Retryable, Recover 사용법][retryable-recover-basic]
+- [Jackson Annotation 정리][jackson-annotation]
 
 ## DB
 
@@ -15,6 +16,7 @@
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
 [retryable-recover-basic]: ./spring/retryable-recover-basic.md
+[jackson-annotation]: ./spring/jackson-annotation.md
 
 [db]: ./database
 [exclusive-shared-lock]: ./database/exclusive-shared-lock.md
