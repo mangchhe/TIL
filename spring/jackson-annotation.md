@@ -5,15 +5,22 @@
 
 ## 목차
 
-- [Jackson Serialization Annotations](#Jackson-Serialization-Annotations)
+- [Serialization Annotations](#Serialization-Annotations)
     - [@JsonAnyGetter](#JsonAnyGetter)
     - [@JsonGetter](#JsonGetter)
     - [@JsonPropertyOrder](#JsonPropertyOrder)
     - [@JsonRawValue](#JsonRawValue)
     - [@JsonValue](#JsonValue)
     - [@JsonRootName](JsonRootName)
+- [Deserialization Annotations](#Deserialization-Annotations)
+	- [@JsonCreator](#JsonCreator)
+	- [@JacksonInject](#JacksonInject)
+	- [@JsonAnySetter](#JsonAnySetter)
+	- [@JsonSetter](#JsonSetter)
+	- [@JsonDeserialize](#JsonDeserialize)
+	- [@JsonAlias](#JsonAlias)
 
-## Jackson Serialization Annotations
+## Serialization Annotations
 
 ### JsonAnyGetter
 
@@ -62,7 +69,7 @@ public void jsonAnyGetter() throws Exception {
 ### JsonGetter
 
 - @JsonProperty 대안
-- 해당 값의 키값을 정의할 수 있다. getter 이름이랑 멤버 변수명이 다를 때 유용하다.
+- 해당 값의 키값을 정의할 수 있다. getter 이름이랑 프로퍼티명이 다를 때 유용하다.
 
 ```json
 before
@@ -101,7 +108,7 @@ public void jsonGetter() throws Exception {
 
 ### JsonPropertyOrder
 
-- 직렬화 시 멤버 변수의 순서를 결정한다.
+- 직렬화 시 프로퍼티의 순서를 결정한다.
 
 ```json
 before
@@ -298,3 +305,233 @@ public void jsonSerialize() throws Exception {
     assertThat(result).isEqualTo("{\"name\":\"party\",\"eventDate\":\"27-05-2022 01:50:00\"}");
 }
 ```
+
+## Deserialization Annotations
+
+### JsonCreator
+
+- 생성자나 팩토리를 대상으로 역직렬화하도록 사용할 수 있다.
+- 대상 엔티티와 정확히 일치하지 않는 일부 JSON을 역직렬화할 때 유용하다.
+- 만약 존재하지 않는 프로퍼티를 역직렬화하려고 할 때 UnrecognizedPropertyException이 발생한다.
+
+```java
+public class BeanWithCreator {
+
+	public int id;
+	public String name;
+
+	@JsonCreator
+	public BeanWithCreator(
+		@JsonProperty("id") int id,
+		@JsonProperty("theName") String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+
+@Test
+public void jsonCreator() throws Exception {
+	//given
+	String json = "{\"id\":1,\"theName\":\"My bean\"}";
+	//when
+	BeanWithCreator bean = new ObjectMapper()
+		.readerFor(BeanWithCreator.class)
+		.readValue(json);
+	//then
+	assertThat(bean.name).isEqualTo("My bean");
+}
+```
+
+### JacksonInject
+
+- 프로퍼티는 JSON에 존재하지 않는 값을 인젝션을 이용해 값을 주입받을 수 있다.
+- 같은 타입 두 개를 주입하려고 할 경우 InvalidDefinitionException이 발생한다.
+
+```java
+public class BeanWithInject {
+
+	@JacksonInject
+	public int id;
+
+	@JacksonInject
+	public long id2;
+
+	public String name;
+}
+
+@Test
+public void jacksonInject() throws Exception {
+	//given
+	String json = "{\"name\":\"My bean\"}";
+	//when
+	InjectableValues inject = new InjectableValues.Std()
+		.addValue(int.class, 1)
+		.addValue(long.class, 3);
+	BeanWithInject bean = new ObjectMapper().reader(inject)
+		.forType(BeanWithInject.class)
+		.readValue(json);
+	//then
+	assertEquals("My bean", bean.name);
+	assertEquals(1, bean.id);
+	assertEquals(3, bean.id2);
+}
+```
+
+### JsonAnySetter
+
+- @JsonAnyGetter와 반대라고 생각하면 된다.
+- Map 사용을 유연하게 제공한다. (역직렬화 시에 JSON 값을 Map에 담아준다.)
+
+```java
+public class ExtendableBean {
+
+	public String name;
+	private Map<String, String> properties = new HashMap<>();
+
+	@JsonAnySetter
+	public void add(String key, String value) {
+		properties.put(key, value);
+	}
+
+	public Map<String, String> getProperties() {
+		return properties;
+	}
+}
+
+@Test
+public void jacksonAnySetter() throws Exception {
+	//given
+	String json
+		= "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
+	//when
+	ExtendableBean bean = new ObjectMapper()
+		.readerFor(ExtendableBean.class)
+		.readValue(json);
+	//then
+	assertEquals("My bean", bean.name);
+	assertEquals("val1", bean.getProperties().get("attr1"));
+	assertEquals("val2", bean.getProperties().get("attr2"));
+}
+```
+
+### JsonSetter
+
+- @JsonProperty 대안
+- Setter에 적용할 수 있고 타겟 엔티티 클래스의 프로퍼티가 실제 JSON 데이터와 다를 때 유용하다.
+
+```java
+public class MyBean {
+
+	public int id;
+	private String name;
+
+	@JsonSetter("name")
+	public void setTheName(String name) {
+		this.name = name;
+	}
+
+	public String getTheName() {
+		return name;
+	}
+}
+
+@Test
+public void jsonSetter() throws Exception {
+	//given
+	String json = "{\"id\":1,\"name\":\"My bean\"}";
+	//when
+	MyBean bean = new ObjectMapper()
+		.readerFor(MyBean.class)
+		.readValue(json);
+	//then
+	assertEquals("My bean", bean.getTheName());
+}
+```
+
+### JsonDeserialize
+
+- 커스텀 한 역직렬 변환기를 설정하는 것을 말한다.
+
+```java
+public class EventWithSerializer {
+
+	public String name;
+
+	@JsonDeserialize(using = CustomDateDeserializer.class)
+	public Date eventDate;
+}
+public class CustomDateDeserializer extends StdDeserializer<Date> {
+
+	private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+	public CustomDateDeserializer() {
+		this(null);
+	}
+
+	public CustomDateDeserializer(Class<?> vc) {
+		super(vc);
+	}
+
+	@Override
+	public Date deserialize(JsonParser jsonparser, DeserializationContext context) throws IOException {
+		String date = jsonparser.getText();
+		try {
+			return formatter.parse(date);
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}
+
+@Test
+public void jsonDeserialize() throws Exception {
+	//given
+	String json = "{\"name\":\"party\",\"eventDate\":\"28-05-2022 08:50:00\"}";
+	//when
+	SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	EventWithSerializer event = new ObjectMapper()
+		.readerFor(EventWithSerializer.class)
+		.readValue(json);
+	//then
+	assertEquals("28-05-2022 08:50:00", df.format(event.eventDate));
+}
+```
+
+### JsonAlias
+
+- 하나 또는 두 개 이상의 이름을 역직렬화하는 동안 프로터리로 설정하는 데에 사용된다.
+
+```java
+public class AliasBean {
+
+	@JsonAlias({ "fName", "f_name" })
+	private String firstName;
+	private String lastName;
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+}
+
+@Test
+public void jsonAlias() throws Exception {
+	//given
+	String json = "{\"fName\": \"John\", \"lastName\": \"Green\"}";
+	//when
+	AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
+	//then
+	assertEquals("John", aliasBean.getFirstName());
+
+	//given
+	String json2 = "{\"f_name\": \"John\", \"lastName\": \"Green\"}";
+	//when
+	AliasBean aliasBean2 = new ObjectMapper().readerFor(AliasBean.class).readValue(json2);
+	//then
+	assertEquals("John", aliasBean2.getFirstName());
+}
+```
+
