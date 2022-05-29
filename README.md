@@ -1,5 +1,9 @@
 # Today I Learned
 
+## Java
+
+- [Reflection 정리][reflection]
+
 ## Spring
 
 - [Multi Module with Gradle][multi-module-with-gradle]
@@ -12,6 +16,9 @@
 - [Transaction Isolation Level][transaction-isolation-level]
 - [Optimistic Lock, Pessimistic Lock][optimistic-pessimistic-lock]
 - [Nested Loop Join, Sort Merge Join, Hash Join][nl-sort-merge-hash-join]
+
+[java]: ./java
+[reflection]: ./java/reflection.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
