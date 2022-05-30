@@ -19,6 +19,12 @@
 	- [@JsonSetter](#JsonSetter)
 	- [@JsonDeserialize](#JsonDeserialize)
 	- [@JsonAlias](#JsonAlias)
+- [Jackson Property Inclusion Annotations](#Jackson-Property-Inclusion-Annotations)
+	- [@JsonIgnoreProperties](#JsonIgnoreProperties)
+	- [@JsonIgnore](#JsonIgnore)
+	- [@JsonIgnoreType](#JsonIgnoreType)
+	- [@JsonInclude](#JsonInclude)
+	- [@JsonAutoDetect](#JsonAutoDetect)
 
 ## Serialization Annotations
 
@@ -499,7 +505,7 @@ public void jsonDeserialize() throws Exception {
 
 ### JsonAlias
 
-- 하나 또는 두 개 이상의 이름을 역직렬화하는 동안 프로터리로 설정하는 데에 사용된다.
+- 하나 또는 두 개 이상의 이름을 역직렬화하는 동안 프로퍼티로 설정하는 데에 사용된다.
 
 ```java
 public class AliasBean {
@@ -535,3 +541,157 @@ public void jsonAlias() throws Exception {
 }
 ```
 
+## Jackson Property Inclusion Annotations
+
+### JsonIgnoreProperties
+
+- 클래스 레벨 어노테이션으로 변환 시에 무시할 프로퍼티를 설정한다.
+
+```java
+@JsonIgnoreProperties({"id"})
+public class BeanWithIgnoreProperties {
+
+	public int id;
+	public String name;
+
+	public BeanWithIgnoreProperties(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void jsonIgnoreProperties() throws Exception {
+	//given
+	final BeanWithIgnoreProperties bean = new BeanWithIgnoreProperties(1, "My bean");
+	//when
+	final String result = new ObjectMapper().writeValueAsString(bean);
+	//then
+	assertTrue(result.contains("My bean"));
+	assertFalse(result.contains("id"));
+}
+```
+
+### JsonIgnore
+
+- 필드 레벨 어노테이션으로 변환 시에 무시할 프로퍼티에 사용한다.
+
+```java
+public class BeanWithIgnore {
+
+	@JsonIgnore
+	public int id;
+	public String name;
+
+	public BeanWithIgnore(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void jsonIgnore() throws Exception {
+	//given
+	final BeanWithIgnore bean = new BeanWithIgnore(1, "My Bean");
+	//when
+	final String result = new ObjectMapper().writeValueAsString(bean);
+	//then
+	assertTrue(result.contains("My Bean"));
+	assertFalse(result.contains("id"));
+}
+```
+
+### JsonIgnoreType
+
+- 어노테이션이 달린 모든 프로터리를 무시한다.
+
+```java
+public class User {
+
+	public int id;
+	public Name name;
+
+	@JsonIgnoreType
+	public static class Name {
+		public String firstName;
+		public String lastName;
+
+		public Name(String firstName, String lastName) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+	}
+
+	public User(int id, Name name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void jsonIgnoreType() throws Exception {
+	//given
+	final User.Name name = new User.Name("John", "Doe");
+	final User user = new User(1, name);
+	//when
+	final String result = new ObjectMapper().writeValueAsString(user);
+	//then
+	assertTrue(result.contains("1"));
+	assertFalse(result.contains("name"));
+	assertFalse(result.contains("John"));
+}
+```
+
+### JsonInclude
+
+- 비어 있거나, null 이거나 기본값인 프로퍼티를 무시 대상으로 설정할 수 있다.
+
+```java
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class MyBean {
+
+	public int id;
+	public String name;
+
+	public MyBean(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void jsonInclude() throws Exception {
+	//given
+	final MyBean bean = new MyBean(1, null);
+	//when
+	final String result = new ObjectMapper().writeValueAsString(bean);
+	//then
+	assertTrue(result.contains("1"));
+	assertFalse(result.contains("name"));
+}
+```
+
+### JsonAutoDetect
+
+- 프로퍼티가 무시될지 말지에 대한 범위를 설정할 수 있다.
+- getter, creator, field에 설정할 수 있고 ANY, NON_PRIVATE, PUBLIC_ONLY 등 존재한다.
+
+```java
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class PrivateBean {
+
+	private int id;
+	private String name;
+
+	public PrivateBean(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void jsonAutoDetect() throws Exception {
+	//given
+	final PrivateBean bean = new PrivateBean(1, "My bean");
+	//when
+	final String result = new ObjectMapper().writeValueAsString(bean);
+	//then
+	assertTrue(result.contains("1"));
+	assertTrue(result.contains("My bean"));
+}
+```
