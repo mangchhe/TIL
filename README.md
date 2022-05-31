@@ -3,6 +3,7 @@
 ## Java
 
 - [Reflection 정리][reflection]
+- [Synchronized, Volatile, Atomic Type][synchronized-volatile-atomic]
 
 ## Spring
 
@@ -19,6 +20,7 @@
 
 [java]: ./java
 [reflection]: ./java/reflection.md
+[synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
