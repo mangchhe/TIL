@@ -25,6 +25,12 @@
 	- [@JsonIgnoreType](#JsonIgnoreType)
 	- [@JsonInclude](#JsonInclude)
 	- [@JsonAutoDetect](#JsonAutoDetect)
+- [Jackson Polymorphic Type Handling Annotations](#Jackson-Polymorphic-Type-Handling-Annotations)
+- [Jackson General Annotations](#Jackson-General-Annotations)
+	- [@JsonProperty](#JsonProperty)
+	- [@JsonFormat](#JsonFormat)
+	- [@JsonUnwrapped](#JsonUnwrapped)
+	- [@JsonView](#JsonView)
 
 ## Serialization Annotations
 
@@ -693,5 +699,281 @@ public void jsonAutoDetect() throws Exception {
 	//then
 	assertTrue(result.contains("1"));
 	assertTrue(result.contains("My bean"));
+}
+```
+
+## Jackson Polymorphic Type Handling Annotations
+
+- @JsonTypeInfo : 인터페이스나 추상 클래스를 이용하여 다형성을 구현할 경우, 직렬화할 때 타입에 대한 상세 정보를 담는다.
+- @JsonSubTypes : 서브 타입을 나타낸다.
+- @JsonTypeName : 어노테이션이 사용된 클래스의 논리적 이름을 지정한다.
+
+```java
+public class Zoo {
+
+	public Animal animal;
+
+	public Zoo() {
+	}
+
+	public Zoo(Animal animal) {
+		this.animal = animal;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+}
+
+@JsonTypeInfo(
+	use = JsonTypeInfo.Id.NAME,
+	include = JsonTypeInfo.As.PROPERTY,
+	property = "type"
+)
+@JsonSubTypes({
+	@JsonSubTypes.Type(value = Dog.class, name = "dog"),
+	@JsonSubTypes.Type(value = Cat.class, name = "cat")
+})
+public interface Animal {
+}
+
+@JsonTypeName("cat")
+public class Cat implements Animal {
+
+	boolean likesCream;
+	public int lives;
+
+	public Cat() {}
+
+	public Cat(boolean likesCream, int lives) {
+		this.likesCream = likesCream;
+		this.lives = lives;
+	}
+}
+
+@JsonTypeName("dog")
+public class Dog implements Animal {
+
+	public double barkVolume;
+
+	public Dog() {}
+
+	public Dog(double barkVolume) {
+		this.barkVolume = barkVolume;
+	}
+}
+```
+
+```java
+@Test
+public void serializationDog() throws Exception {
+	//given
+	final Dog dog = new Dog();
+	final Zoo zoo = new Zoo(dog);
+	//when
+	final String result = objectMapper.writeValueAsString(zoo);
+	//then
+	assertTrue(result.contains("type"));
+	assertTrue(result.contains("dog"));
+}
+
+@Test
+public void serializationCat() throws Exception {
+	//given
+	final Cat cat = new Cat();
+	final Zoo zoo = new Zoo(cat);
+	//when
+	final String result = objectMapper.writeValueAsString(zoo);
+	//then
+	assertTrue(result.contains("type"));
+	assertTrue(result.contains("cat"));	}
+
+@Test
+public void deserializationCat() throws Exception {
+	//given
+	String json = "{\"animal\":{\"type\":\"cat\"}}";
+	//when
+	final Zoo result = objectMapper.readerFor(Zoo.class)
+		.readValue(json);
+	//then
+	assertTrue(result.getAnimal().getClass().equals(Cat.class));
+}
+```
+
+## Jackson General Annotations
+
+### JsonProperty
+
+- 프로퍼티의 이름을 나타내는 데 사용된다.
+
+```java
+public class MyBean {
+
+	public int id;
+	private String name;
+
+	public MyBean() {
+	}
+
+	public MyBean(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	@JsonProperty("name")
+	public void setTheName(String name) {
+		this.name = name;
+	}
+
+	@JsonProperty("name")
+	public String getTheName() {
+		return name;
+	}
+}
+
+@Test
+public void jsonProperty() throws Exception {
+	//given
+	final MyBean bean = new MyBean(1, "My bean");
+	//when, then
+	final String result = objectMapper.writeValueAsString(bean);
+
+	assertTrue(result.contains("name"));
+	assertTrue(result.contains("1"));
+
+	final MyBean resultBean = objectMapper.readerFor(MyBean.class)
+		.readValue(result);
+
+	assertTrue(resultBean.getTheName().equals("My bean"));
+}
+```
+
+### JsonFormat
+
+- Date/Time 값을 직렬화할 때 포맷 형태를 명시할 수 있다.
+
+```java
+public class EventWithFormat {
+
+	public String name;
+
+	@JsonFormat(
+		shape = JsonFormat.Shape.STRING,
+		pattern = "dd-MM-yyyy"
+	)
+	public Date evenDate;
+
+	public EventWithFormat(String name, Date evenDate) {
+		this.name = name;
+		this.evenDate = evenDate;
+	}
+}
+
+@Test
+public void JsonFormat() throws Exception {
+	//given
+	SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	df.setTimeZone(TimeZone.getTimeZone("UTC"));
+	Date date = df.parse("01-06-2022 11:00:00");
+	EventWithFormat event = new EventWithFormat("party", date);
+	//when
+	final String result = objectMapper.writeValueAsString(event);
+	//then
+	assertTrue(result.contains("01-06-2022"));
+}
+```
+
+### JsonUnwrapped
+
+- 직렬화/역직렬화할 때 값을 평평하게 한다. 아래 예제 참고
+
+```json
+// before
+{"id":1,"firstName":"John","lastName":"Doe"}
+// after
+{"id":1,"name":{"firstName":"John","lastName":"Doe"}}
+```
+
+```java
+public class UnwrappedUser {
+
+	public int id;
+
+	@JsonUnwrapped
+	public Name name;
+
+	public static class Name {
+		public String firstName;
+		public String lastName;
+
+		public Name(String firstName, String lastName) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+	}
+
+	public UnwrappedUser(int id, Name name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+
+@Test
+public void JsonUnwrapped() throws Exception {
+	//given
+	final UnwrappedUser.Name name = new UnwrappedUser.Name("John", "Doe");
+	final UnwrappedUser unwrappedUser = new UnwrappedUser(1, name);
+	//when
+	final String result = objectMapper.writeValueAsString(unwrappedUser);
+	//then
+	assertTrue(result.equals("{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Doe\"}"));
+}
+```
+
+### JsonView
+
+- 직렬화/역직렬화할 때 해당 프로퍼티를 포함할 클래스를 지정할 수 있다.
+
+```java
+public class Views {
+
+	public static class Public {}
+	public static class Internal {}
+	public static class ExtendPublic extends Public {}
+}
+
+public class Item {
+
+	@JsonView(Views.Public.class)
+	public int id;
+
+	@JsonView({Views.Public.class, Views.Internal.class})
+	public String itemName;
+
+	@JsonView({Views.ExtendPublic.class, Views.Internal.class})
+	public String ownerName;
+
+	public Item(int id, String itemName, String ownerName) {
+		this.id = id;
+		this.itemName = itemName;
+		this.ownerName = ownerName;
+	}
+}
+
+@Test
+public void JsonView() throws Exception {
+	//given
+	final Item item = new Item(2, "book", "John");
+	//when
+	final String result = objectMapper.writerWithView(Views.Public.class)
+		.writeValueAsString(item);
+	final String result2 = objectMapper.writerWithView(Views.Internal.class)
+		.writeValueAsString(item);
+	final String result3 = objectMapper.writerWithView(Views.ExtendPublic.class)
+		.writeValueAsString(item);
+	//then
+	assertTrue(result.equals("{\"id\":2,\"itemName\":\"book\"}"));
+	assertTrue(result2.equals("{\"itemName\":\"book\",\"ownerName\":\"John\"}"));
+	assertTrue(result3.equals("{\"id\":2,\"itemName\":\"book\",\"ownerName\":\"John\"}"));
 }
 ```
