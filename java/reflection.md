@@ -1,8 +1,24 @@
 # Reflectoin 정리
 
-- Baledung 실습 -> [링크](https://www.baeldung.com/java-reflection)
+- Baeldung 실습 -> [링크](https://www.baeldung.com/java-reflection)
 - 실습 저장소 : [https://github.com/TIL-Repo/java-study/blob/master/src/test/java/reflection/ReflectionTest.java](https://github.com/TIL-Repo/java-study/blob/master/src/test/java/reflection/ReflectionTest.java)
-- 실습 내용 요약 : [바로가기](#요약)
+
+## 목차
+
+- [개념](#개념)
+- [실습](#실습)
+    - [사용하게 될 클래스](#사용하게-될-클래스)
+    - [자바 클래스 검사](#자바-클래스-검사)
+        - [클래스 & 이름](#클래스-&-이름)
+        - [Modifier](#Modifier)
+        - [Package](#Package)
+        - [Super Class](#Super-Class)
+        - [Implemented Interface](#Implemented-Interface)
+        - [생성자, 메서드 및 필드](#생성자,-메서드-및-필드)
+    - [생성자 검사](#생성자-검사)
+    - [필드 검사](#필드-검사)
+    - [메소드 검사](#메소드-검사)
+- [요약](#요약)
 
 ## 개념
 
@@ -538,3 +554,7 @@ public void invokes() throws Exception {
 - getDeclaredMethods() : 해당 클래스의 public 메소드의 배열을 리턴한다.
 - getDeclaredMethod('메소드명', ... parameters), 인자가 없다면 메소드명만 아니라면 인자 개수만큼 작성
 - invoke(Object o, Object... args) : 해당 메소드 호출
+
+## Reference
+
+- [Baeldung](https://www.baeldung.com/java-reflection)

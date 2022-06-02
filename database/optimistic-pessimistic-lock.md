@@ -45,4 +45,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 ## Reference
 
-[10분 테코톡](https://www.youtube.com/watch?v=w6sFR3ZM64c)
+- [10분 테코톡](https://www.youtube.com/watch?v=w6sFR3ZM64c)
