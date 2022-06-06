@@ -31,6 +31,12 @@
 	- [@JsonFormat](#JsonFormat)
 	- [@JsonUnwrapped](#JsonUnwrapped)
 	- [@JsonView](#JsonView)
+	- [@JsonManagedReference, @JsonBackReference](#JsonManagedReference,-JsonBackReference)
+	- [@JsonIdentityInfo](#JsonIdentityInfo)
+	- [@JsonFilter](#JsonFilter)
+	- [@JacksonAnnotationsInside](#JacksonAnnotationsInside)
+	- [MixIn Method](#MixIn-Method)
+	- [Disable Method](#Disable-Method)
 
 ## Serialization Annotations
 
@@ -975,5 +981,266 @@ public void JsonView() throws Exception {
 	assertTrue(result.equals("{\"id\":2,\"itemName\":\"book\"}"));
 	assertTrue(result2.equals("{\"itemName\":\"book\",\"ownerName\":\"John\"}"));
 	assertTrue(result3.equals("{\"id\":2,\"itemName\":\"book\",\"ownerName\":\"John\"}"));
+}
+```
+
+### JsonManagedReference, JsonBackReference
+
+- 순환 참조를 막기 위해서 사용되며 JPA 양방향 매핑 시 그 객체를 역/직렬화할 때 사용될 수 있다.
+	- JsonMappingException: infinite recursion이 발생하는 것을 방지
+- 어노테이션을 부모/자식 관계로 각각 설정해준다.
+- JsonManagedReference 직렬화 시 포함, JsonBackReference 직렬화 시 제외
+
+```json
+{"id":2,"itemName":"book","owner":{"id":1,"name":"John"}}
+```
+
+```java
+public class ItemWithRef {
+
+	public int id;
+	public String itemName;
+
+	@JsonManagedReference
+	public UserWithRef owner;
+
+	public ItemWithRef(int id, String itemName, UserWithRef owner) {
+		this.id = id;
+		this.itemName = itemName;
+		this.owner = owner;
+	}
+}
+public class UserWithRef {
+
+	public int id;
+	public String name;
+
+	@JsonBackReference
+	public List<ItemWithRef> userItems;
+
+	public UserWithRef(int id, String name) {
+		this.id = id;
+		this.name = name;
+		userItems = new ArrayList<>();
+	}
+
+	public void addItem(ItemWithRef userItem) {
+		this.userItems.add(userItem);
+	}
+}
+
+@Test
+public void JsonManagedReference_JsonBackReference() throws Exception {
+	// given
+	final UserWithRef user = new UserWithRef(1, "John");
+	final ItemWithRef item = new ItemWithRef(2, "book", user);
+	user.addItem(item);
+	// when
+	final String result = objectMapper.writeValueAsString(item);
+	// then
+	assertTrue(result.contains("book"));
+	assertTrue(result.contains("2"));
+	assertFalse(result.contains("userItems"));
+}
+```
+
+### JsonIdentityInfo
+
+- 직렬화에 포함할 프로퍼티 값을 지정한다.
+- 순환 참조를 방지할 때 사용된다.
+
+```json
+{"id":2,"itemName":"book","owner":{"id":1,"name":"John","userItems":[2]}}
+```
+
+```java
+@JsonIdentityInfo(
+	generator = ObjectIdGenerators.PropertyGenerator.class,
+	property = "id"
+)
+public class ItemWithIdentity {
+
+	public int id;
+	public String itemName;
+	public UserWithIdentity owner;
+
+	public ItemWithIdentity(int id, String itemName,
+		UserWithIdentity owner) {
+		this.id = id;
+		this.itemName = itemName;
+		this.owner = owner;
+	}
+}
+@JsonIdentityInfo(
+	generator = ObjectIdGenerators.PropertyGenerator.class,
+	property = "id"
+)
+public class UserWithIdentity {
+
+	public int id;
+	public String name;
+	public List<ItemWithIdentity> userItems;
+
+	public UserWithIdentity(int id, String name) {
+		this.id = id;
+		this.name = name;
+		userItems = new ArrayList<>();
+	}
+
+	public void addItem(ItemWithIdentity itemWithIdentity) {
+		userItems.add(itemWithIdentity);
+	}
+}
+
+@Test
+public void JsonIdentityInfo() throws Exception {
+	// given
+	final UserWithIdentity user = new UserWithIdentity(1, "John");
+	final ItemWithIdentity item = new ItemWithIdentity(2, "book", user);
+	user.addItem(item);
+	// when
+	final String result = objectMapper.writeValueAsString(item);
+	// then
+	assertTrue(result.contains("book"));
+	assertTrue(result.contains("John"));
+	assertTrue(result.contains("userItems"));
+}
+```
+
+### JsonFilter
+
+- 직렬화할 때 적용할 필터를 명시한다.
+
+```json
+{"name":"My bean"}
+```
+
+```java
+@JsonFilter("myFilter")
+public class BeanWithFilter {
+
+	public int id;
+	public String name;
+
+	public BeanWithFilter(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+
+@Test
+public void JsonFilter() throws Exception {
+	// given
+	final BeanWithFilter bean = new BeanWithFilter(1, "My bean");
+
+	final SimpleFilterProvider filters = new SimpleFilterProvider().addFilter("myFilter",
+		SimpleBeanPropertyFilter.filterOutAllExcept("name"));
+	// when
+	final String result = objectMapper.writer(filters)
+		.writeValueAsString(bean);
+	// then
+	assertTrue(result.contains("My bean"));
+	assertFalse(result.contains("id"));
+}
+```
+
+### JacksonAnnotationsInside
+
+- Jackson 커스텀해서 여러 설정을 담은 커스텀 어노테이션을 만들 때 사용한다.
+
+```json
+{"name":"My bean","id":1}
+```
+
+```java
+@Retention(RetentionPolicy.RUNTIME)
+@JacksonAnnotationsInside
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({"name", "id", "dataCreated"})
+public @interface CustomAnnotation {}
+
+@Test
+public void JacksonAnnotationsInside() throws Exception {
+	// given
+	final BeanWithCustomAnnotation bean = new BeanWithCustomAnnotation(1, "My bean", null);
+	// when
+	final String result = objectMapper.writeValueAsString(bean);
+	// then
+	assertTrue(result.equals("{\"name\":\"My bean\",\"id\":1}"));
+	assertFalse(result.contains("dateCreated"));
+}
+```
+
+### MixIn Method
+
+- ObjectMapper를 구성하는 클래스에 MixIn을 통해서 특정 설정값들을 설정할 수 있다.
+
+```json
+{"id":1,"itemName":"book"}
+```
+
+```java
+public class Item2 {
+
+	public int id;
+	public String itemName;
+	public User owner;
+
+	public Item2(int id, String itemName, User owner) {
+		this.id = id;
+		this.itemName = itemName;
+		this.owner = owner;
+	}
+}
+@JsonIgnoreType
+public class MyMixInForIgnoreType {}
+
+@Test
+public void MinInMethod() throws Exception {
+	// given
+	final Item2 item = new Item2(1, "book", null);
+	// when, then
+	final String result = objectMapper.writeValueAsString(item);
+	assertTrue(result.contains("owner"));
+
+	final ObjectMapper objectMapper = new ObjectMapper();
+	objectMapper.addMixIn(User.class, MyMixInForIgnoreType.class);
+
+	final String result2 = objectMapper.writeValueAsString(item);
+	assertFalse(result2.contains("owner"));
+}
+```
+
+### Disable Method
+
+- 클래스에 설정된 모든 jackson 설정값들을 무시한다.
+
+```json
+{"id":1,"name":null}
+```
+
+```java
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({"name", "id"})
+public class MyBean2 {
+
+	public int id;
+	public String name;
+
+	public MyBean2(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+}
+@Test
+public void Disable() throws Exception {
+	// given
+	final ObjectMapper objectMapper = new ObjectMapper();
+	final MyBean2 bean = new MyBean2(1, null);
+	// when
+	objectMapper.disable(MapperFeature.USE_ANNOTATIONS);
+	final String result = objectMapper.writeValueAsString(bean);
+	// then
+	assertTrue(result.equals("{\"id\":1,\"name\":null}"));
 }
 ```
