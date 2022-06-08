@@ -24,7 +24,7 @@ Set-Cookie: key=value; path=/; HttpOnly
 
 ```java
 Cookie cookie = new Cookie(key, value);
-cookie.setHttpOnly();
+cookie.setHttpOnly(true);
 ```
 
 ## Secure
@@ -40,5 +40,5 @@ Set-Cookie: key=value; path=/; Secure
 
 ```java
 Cookie cookie = new Cookie(key, value);
-cookie.Secure();
+cookie.setSecure(true);
 ```
