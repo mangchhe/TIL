@@ -21,6 +21,10 @@
 - [Optimistic Lock, Pessimistic Lock][optimistic-pessimistic-lock]
 - [Nested Loop Join, Sort Merge Join, Hash Join][nl-sort-merge-hash-join]
 
+## Web
+
+- [HttpOnly, Secure - Cookie][cookie-httponly-secure]
+
 [java]: ./java
 [reflection]: ./java/reflection.md
 [synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
@@ -38,3 +42,5 @@
 [transaction-isolation-level]: ./database/transaction-isolation-level.md
 [optimistic-pessimistic-lock]: ./database/optimistic-pessimistic-lock.md
 [nl-sort-merge-hash-join]: ./database/nl-sort-merge-hash-join.md
+
+[cookie-httponly-secure]: ./web/cookie-httponly-secure.md
