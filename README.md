@@ -12,6 +12,7 @@
 - [Retryable, Recover 사용법][retryable-recover-basic]
 - [Jackson Annotation 정리][jackson-annotation]
 - [RequestContextHolder][requestcontextholder]
+- [JDK Dynamic Proxy, CGLib][jdk-dynamic-proxy-cglib]
 
 ## DB
 
@@ -29,6 +30,7 @@
 [reflection]: ./java/reflection.md
 [synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
 [threadlocal]: ./java/threadlocal.md
+[jdk-dynamic-proxy-cglib]: ./java/jdk-dynamic-proxy-cglib.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
@@ -43,4 +45,5 @@
 [optimistic-pessimistic-lock]: ./database/optimistic-pessimistic-lock.md
 [nl-sort-merge-hash-join]: ./database/nl-sort-merge-hash-join.md
 
+[web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
