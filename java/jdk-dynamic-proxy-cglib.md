@@ -231,3 +231,7 @@ public class CglibTest {
 - 프록시가 동적으로 생성이 되고 실행되는 것을 확인할 수 있다.
 
 ![CglibProxyTC](https://user-images.githubusercontent.com/50051656/172674157-dd79959b-4281-46c5-a005-7d45d1ee7c53.png)
+
+## Reference
+
+- [스프링 핵심 원리 - 고급편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
