@@ -13,6 +13,7 @@
 - [Jackson Annotation 정리][jackson-annotation]
 - [RequestContextHolder][requestcontextholder]
 - [JDK Dynamic Proxy, CGLib][jdk-dynamic-proxy-cglib]
+- [로그 추적기][log-trace]
 
 ## DB
 
@@ -37,6 +38,7 @@
 [retryable-recover-basic]: ./spring/retryable-recover-basic.md
 [jackson-annotation]: ./spring/jackson-annotation.md
 [requestcontextholder]: ./spring/requestcontextholder.md
+[log-trace]: ./spring/log-trace.md
 
 [db]: ./database
 [index]: ./database/index.md
