@@ -5,6 +5,7 @@
 - [Reflection 정리][reflection]
 - [Synchronized, Volatile, Atomic Type][synchronized-volatile-atomic]
 - [ThreadLocal][threadlocal]
+- [SerialVersionUID 지정하는 이유][serialVersionUID]
 
 ## Spring
 
@@ -32,6 +33,7 @@
 [synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
 [threadlocal]: ./java/threadlocal.md
 [jdk-dynamic-proxy-cglib]: ./java/jdk-dynamic-proxy-cglib.md
+[serialVersionUID]: ./java/serialVersionUID.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
