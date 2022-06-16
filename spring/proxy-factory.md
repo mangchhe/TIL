@@ -11,6 +11,7 @@
 ### 실습
 
 - 인터페이스를 가지는 클래스, 그렇지 않은 구체 클래스, 그리고 CGLIB으로 강제하는 설정에 대해 실습해보자.
+- 예제 소스 : [→](https://github.com/TIL-Repo/spring-study/tree/main/ProxyFactory)
 
 #### 준비
 
