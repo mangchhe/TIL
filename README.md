@@ -15,6 +15,7 @@
 - [RequestContextHolder][requestcontextholder]
 - [JDK Dynamic Proxy, CGLib][jdk-dynamic-proxy-cglib]
 - [로그 추적기][log-trace]
+- [Proxy Factory][proxy-factory]
 
 ## DB
 
@@ -41,6 +42,7 @@
 [jackson-annotation]: ./spring/jackson-annotation.md
 [requestcontextholder]: ./spring/requestcontextholder.md
 [log-trace]: ./spring/log-trace.md
+[proxy-factory]: ./spring/proxy-factory.md
 
 [db]: ./database
 [index]: ./database/index.md
