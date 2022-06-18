@@ -17,6 +17,7 @@
 - [로그 추적기][log-trace]
 - [Proxy Factory][proxy-factory]
 - [Advisor, Advice, Pointcut 개념][advisor-advice-pointcut]
+- [빈 후처리기][bean-post-processor]
 
 ## DB
 
@@ -45,6 +46,7 @@
 [log-trace]: ./spring/log-trace.md
 [proxy-factory]: ./spring/proxy-factory.md
 [advisor-advice-pointcut]: ./spring/advisor-advice-pointcut.md
+[bean-post-processor]: ./spring/bean-post-processor.md
 
 [db]: ./database
 [index]: ./database/index.md
