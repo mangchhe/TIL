@@ -18,6 +18,7 @@
 - [Proxy Factory][proxy-factory]
 - [Advisor, Advice, Pointcut 개념][advisor-advice-pointcut]
 - [빈 후처리기][bean-post-processor]
+- [@Aspect][aspect]
 
 ## DB
 
@@ -47,6 +48,7 @@
 [proxy-factory]: ./spring/proxy-factory.md
 [advisor-advice-pointcut]: ./spring/advisor-advice-pointcut.md
 [bean-post-processor]: ./spring/bean-post-processor.md
+[aspect]: ./spring/aspect.md
 
 [db]: ./database
 [index]: ./database/index.md
