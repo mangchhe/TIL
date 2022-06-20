@@ -19,6 +19,7 @@
 - [Advisor, Advice, Pointcut 개념][advisor-advice-pointcut]
 - [빈 후처리기][bean-post-processor]
 - [@Aspect][aspect]
+- [AOP 개념][aop-concept]
 
 ## DB
 
@@ -49,6 +50,7 @@
 [advisor-advice-pointcut]: ./spring/advisor-advice-pointcut.md
 [bean-post-processor]: ./spring/bean-post-processor.md
 [aspect]: ./spring/aspect.md
+[aop-concept]: ./spring/aop-concept.md
 
 [db]: ./database
 [index]: ./database/index.md

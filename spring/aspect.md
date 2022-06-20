@@ -58,3 +58,7 @@ public class AutoProxyConfig {
     1. **@Aspect Advisor 조회 : `@Aspect`가 붙은 빈, 어드바이저 빌더 내부에 저장된 Advisor 모두 조회**
 1. 포인트컷을 보고 프록시 대상인지 확인 후 프록시 생성
 1. 프록시로 생성된 객체 또는 아닌 객체 스프링 빈으로 등록
+
+## Reference
+
+- [스프링 핵심 원리 - 고급편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
