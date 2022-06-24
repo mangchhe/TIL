@@ -21,6 +21,7 @@
 - [@Aspect][aspect]
 - [AOP 개념][aop-concept]
 - [AOP 구현에 사용되는 어노테이션 사용법][aop-annotations]
+- [Spring Boot Profile 설정][profile-config]
 
 ## DB
 
@@ -53,6 +54,7 @@
 [aspect]: ./spring/aspect.md
 [aop-concept]: ./spring/aop-concept.md
 [aop-annotations]: ./spring/aop-annotations.md
+[profile-config]: ./spring/profile-config.md
 
 [db]: ./database
 [index]: ./database/index.md
