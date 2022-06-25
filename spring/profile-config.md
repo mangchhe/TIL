@@ -115,3 +115,8 @@ spring:
       - classpath:/application-dev.yml
       - classpath:/application-common.yml
 ```
+
+## Reference
+
+- [https://spring.io/blog/2020/08/14/config-file-processing-in-spring-boot-2-4](https://spring.io/blog/2020/08/14/config-file-processing-in-spring-boot-2-4)
+- [https://multifrontgarden.tistory.com/277](https://multifrontgarden.tistory.com/277)
