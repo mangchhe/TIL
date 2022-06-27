@@ -23,6 +23,7 @@
 - [AOP 구현에 사용되는 어노테이션 사용법][aop-annotations]
 - [Spring Boot Profile 설정][profile-config]
 - [Configuration 값 가져오는 방법 - @Value, @ConfigurationProperties][property-config]
+- [@Profile, @ActiveProfiles][profile-activeprofiles]
 
 ## DB
 
@@ -56,7 +57,8 @@
 [aop-concept]: ./spring/aop-concept.md
 [aop-annotations]: ./spring/aop-annotations.md
 [profile-config]: ./spring/profile-config.md
-[property-config]: /spring/property-config.md
+[property-config]: ./spring/property-config.md
+[profile-activeprofiles]: ./spring/profile-activeprofiles.md
 
 [db]: ./database
 [index]: ./database/index.md

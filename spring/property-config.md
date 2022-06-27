@@ -1,6 +1,6 @@
-# Configuration 값 가져오는 방법 - `@Value`, `@ConfigurationProperties`
+# Configuration 값 가져오는 방법
 
-## Value
+## `@Value`
 
 - `@Value`를 사용하여 설정값을 가져온다.
 
@@ -31,7 +31,7 @@ public class AppConfig {
 }
 ```
 
-## ConfigurationProperties
+## `@ConfigurationProperties`
 
 - `@ConfigurationProperties`를 사용하여 설정값을 가져온다.
 
