@@ -37,6 +37,10 @@
 
 - [HttpOnly, Secure - Cookie][cookie-httponly-secure]
 
+## Tool
+
+- [Intellij .http 사용 방법][intellij-http-request]
+
 [java]: ./java
 [reflection]: ./java/reflection.md
 [synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
@@ -69,3 +73,6 @@
 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
+
+[tool]: ./tool
+[intellij-http-request]: ./tool/intellij-http-request.md
