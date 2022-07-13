@@ -14,6 +14,8 @@
 - [Cookie 발급](#Cookie-발급)
 - [Cookie 전달](#Cookie-전달)
 - [권한 인증](#권한-인증)
+- [파일 전달](#파일-전달)
+- [동적 변수](#동적-변수)
 - [메타데이터](#메타데이터)
 
 ## Separator
@@ -147,6 +149,25 @@ Content-Type: application/json
 }
 ```
 
+### 다른 방법
+
+- `<` 기호를 이용하여 따로 파일에 저장한 값을 불러와 입력으로 쓸 수 있다.
+
+```r
+POST http://localhost:8080/body
+Content-Type: application/json
+
+< user.json
+```
+
+```json
+// user.json
+{
+  "username" : "홍길동",
+  "password" : "길동이 패스워드"
+}
+```
+
 ## Cookie 발급
 
 ```java
@@ -202,6 +223,58 @@ POST http://localhost:8080/req-authorization
 Authorization: Bearer test
 ```
 
+## 파일 전달
+
+```java
+@PostMapping("file")
+public String getFile(MultipartFile file) {
+    return file.getName();
+}
+```
+
+```r
+POST http://localhost:8080/file
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="input.txt"
+
+< input.txt
+
+--boundary
+```
+
+## 동적 변수
+
+- {{$uuid}} : 범용 고유 식별자 생성
+- {{$timestamp}} : 현재 UNIX 타임스탬프 생성
+- {{$randomInt}} : 0 ~ 1000 사이의 임의의 정수 생성
+
+```java
+@PostMapping("dynamic-variable")
+public String getDynamicVariable(@RequestBody DynamicVariable dynamicVariable) {
+    return dynamicVariable.toString();
+}
+
+@Data
+static class DynamicVariable {
+    private String uuid;
+    private String timeStamp;
+    private Integer randomInt;
+}
+```
+
+```r
+POST http://localhost:8080/dynamic-variable
+Content-Type: application/json
+
+{
+  "uuid" : "{{$uuid}}",
+  "timeStamp" : "{{$timestamp}}",
+  "randomInt" : "{{$randomInt}}"
+}
+```
+
 ## 메타데이터
 
 - @no-cookie-jar : 요청을 날려 쿠키를 받게 되면 자동으로 저장되어 세팅되게 되는데 그것을 방지할 때 사용
@@ -218,3 +291,7 @@ Authorization: Bearer test
 // @no-log
 POST http://localhost:8080/res-cookie
 ```
+
+# Reference
+
+- [https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html](https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
