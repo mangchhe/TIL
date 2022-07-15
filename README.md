@@ -25,6 +25,10 @@
 - [Configuration 값 가져오는 방법 - @Value, @ConfigurationProperties][property-config]
 - [@Profile, @ActiveProfiles][profile-activeprofiles]
 
+## JPA
+
+- [영속성 컨텍스트 개념 정리][persistence-context]
+
 ## DB
 
 - [Index][index]
@@ -63,6 +67,9 @@
 [profile-config]: ./spring/profile-config.md
 [property-config]: ./spring/property-config.md
 [profile-activeprofiles]: ./spring/profile-activeprofiles.md
+
+[jpa]: ./jpa
+[persistence-context]: ./jpa/persistence-context.md
 
 [db]: ./database
 [index]: ./database/index.md
