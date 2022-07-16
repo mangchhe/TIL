@@ -82,7 +82,32 @@ public class JpaTest {
 }
 ```
 
+## 영속성 컨텍스트 이점
+
+### 1차 캐시
+
+- `@id`를 키로 가지고 엔티티를 값으로 1차 캐시라는 저장 공간에 저장된다.
+- 조회할 때 DB까지 거칠 필요 없이 1차 캐시에서 바로 조회가 가능하다.
+- 만약 1차 캐시에 값이 존재하지 않는다면 DB에서 조회한 후 1차 캐시에 저장하고 값을 반환한다.
+- 트랜잭션이 시작되고 끝날 때까지만 공유하기 때문에 큰 성능 이점을 얻기에는 어렵다.
+
+### 동일성 보장
+
+- 같은 트랜잭션 내에서 같은 엔티티일 경우 같은 객체임을 보장한다.
+
+### 쓰기 지연
+
+- 영속화하면 1차 캐시 저장소와 쓰기 지연 SQL 저장소에도 값이 저장된다.
+- 커밋(=flush)할 때 쓰기 지연 SQL 저장소에 쌓여있는 쿼리문이 함께 발생한다.
+- 매번 DB 커넥션에 접근해야 하는 시간을 줄일 수 있다.
+
+### 변경 감지 (Dirty checking)
+
+- 영속 상태의 엔티티는 변경이 일어날 경우 따로 함수 호출 없이 DB에 update 쿼리가 발생하게 된다.
+- 1차 캐시에는 엔티티가 영속화될 때의 최초 상태를 스냅샷으로 저장하고 있고 commit될 때 비교해서 변경된 값에 대한 update 쿼리를 발생시킨다.
+
 ## Reference
 
+- [http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788960777330](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788960777330)
 - [https://mangchhe.github.io/jpa/2021/02/06/PersistenceContext/](https://mangchhe.github.io/jpa/2021/02/06/PersistenceContext/)
 - [https://www.inflearn.com/course/ORM-JPA-Basic/dashboard](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)
