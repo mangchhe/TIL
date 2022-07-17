@@ -28,6 +28,7 @@
 ## JPA
 
 - [영속성 컨텍스트 개념 정리][persistence-context]
+- [단/양방향 매핑 & 연관관계 주인][directional-association-mapping]
 
 ## DB
 
@@ -70,6 +71,7 @@
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
+[directional-association-mapping]: ./jpa/directional-association-mapping.md
 
 [db]: ./database
 [index]: ./database/index.md
