@@ -1,5 +1,10 @@
 # 단/양방향 매핑 & 연관관계 주인
 
+- 데이터베이스는 외래키로 매핑하면 어느 쪽으로나 조인이 가능함
+- 하지만, JPA에서 객체는 참조할 수 있는 필드가 있어야 접근 가능하기 때문에 단/양방향이 존재한다.
+	- 한쪽만 참조하면 단방향
+	- 양쪽을 참조하면 양방향
+
 ## 단방향
 
 - 하나의 게시글에 여러 개의 댓글을 달 수 있다.
@@ -40,7 +45,7 @@ public class Post {
 
 ## 양방향
 
-![diagram](https://user-images.githubusercontent.com/50051656/179397990-710f03fe-eed0-4a43-88d2-a2884aa6e6b2.png)
+![diagram](https://user-images.githubusercontent.com/50051656/179431465-2b7d5bdd-6299-46a8-8668-e7e02a73f86a.png)
 
 - `@OneToMany`로 외래키를 가지지 않는 곳에 추가
 
