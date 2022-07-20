@@ -2,6 +2,7 @@
 
 ## Java
 
+- [GC(Garbage Collection) 개념과 종류][garbage-collection-type]
 - [Reflection 정리][reflection]
 - [Synchronized, Volatile, Atomic Type][synchronized-volatile-atomic]
 - [ThreadLocal][threadlocal]
@@ -48,6 +49,7 @@
 - [Intellij .http 사용 방법][intellij-http-request]
 
 [java]: ./java
+[garbage-collection-type]: ./java/garbage-collection-type.md
 [reflection]: ./java/reflection.md
 [synchronized-volatile-atomic]: ./java/synchronized-volatile-atomic.md
 [threadlocal]: ./java/threadlocal.md
