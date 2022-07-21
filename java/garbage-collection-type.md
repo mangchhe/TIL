@@ -22,22 +22,30 @@
     - Sweep : Unreachable 객체들을 Heap에서 제거한다.
     - Compact : 객체들이 제거되고 중간중간 비어있는 공간들을 한곳으로 모아 메모리 단편화를 막아주는 역할을 한다.
 
+![mark-sweep-compact](https://user-images.githubusercontent.com/50051656/180222888-37d5b1a3-1d37-40a4-b596-6a926c1908c2.png)
+
 ### Heap 메모리 영역 구조
+
+![heap structure](https://user-images.githubusercontent.com/50051656/180223296-20b104ce-4aa8-4160-8579-8b45577f45b6.png)
 
 - 크게 Young Generation, Old Generation 영역으로 나뉜다.
 - Young Generation
     - Eden
     - Survivor1, 2
 - Old Generation
-    - Old
-    - Permanant
+- Permanent Generation
 
 ### Heap 메모리 영역이 꽉 찼을 때?
 
+![minor gc](https://user-images.githubusercontent.com/50051656/180224476-8bcf66f0-135a-4cb8-a027-216ff9eabdd5.png)
+
 - Eden 영역부터 객체들이 채워지며 꽉 찼을 경우에는 Minor GC(Young Generation)가 발생한다.
 - Eden 영역에서 참조되지 않은 객체들은 해제되고 참조되고 있는 객체들은 Suvivor1으로 이동한다.
-    - 이때 규칙이 있는데 Eden이 채워져 Survivor로 이동할 때 Survivor1, 2를 번갈아 가며 이동한다. 기존에 있던 객체도 포함
+    - 이때 규칙이 있는데 Suvivor1, 2는 둘 중 하나는 비어있는 상태이어야 한다.
     - Survivor에서 살아남은 객체들은 age 값이 계속 증가한다.
+
+![promotion](https://user-images.githubusercontent.com/50051656/180224844-696fe47e-f94b-4816-ba76-4f5aa8a09435.png)
+
 - Age 값의 임계치를 초과한다면 해당 객체들은 Old 영역으로 이동하게 된다.
 - Old 영역 또한 가득 차게 되면 Major GC(Old Generation)가 발생한다.
 
@@ -78,4 +86,5 @@
 
 ## Referece
 
+- [https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 - [https://www.youtube.com/watch?v=Fe3TVCEJhzo](https://www.youtube.com/watch?v=Fe3TVCEJhzo)
