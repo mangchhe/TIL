@@ -25,7 +25,7 @@ public class ABC {
 	@Column(name = "ABC_ID")
 	private Long id;
 
-    private String ABCColumn;
+    private String aBCColumn;
 }
 ```
 
@@ -37,7 +37,7 @@ public class A extends ABC {
 	@Column(name = "A_ID")
 	private Long id;
 
-	private String AColumn;
+	private String aColumn;
 }
 ```
 
@@ -49,7 +49,7 @@ public class B extends ABC {
 	@Column(name = "B_ID")
 	private Long id;
 
-	private String BColumn;
+	private String bColumn;
 }
 ```
 
@@ -61,7 +61,7 @@ public class C extends ABC {
 	@Column(name = "C_ID")
 	private Long id;
 
-	private String CColumn;
+	private String cColumn;
 }
 ```
 
@@ -241,3 +241,8 @@ public class A extends ABC {
     ...
 }
 ```
+
+## References
+
+- [http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788960777330](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788960777330)
+- [https://www.inflearn.com/course/ORM-JPA-Basic/dashboard](https://www.inflearn.com/course/ORM-JPA-Basic/dashboard)

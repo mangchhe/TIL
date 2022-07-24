@@ -32,6 +32,7 @@
 - [단/양방향 매핑 & 연관관계 주인][directional-association-mapping]
 - [연관관계 - N:1, 1:N, 1:1, N:N][association-mapping-type]
 - [상속 관계 매핑][inheritance-mapping]
+- [@MappedSuperclass, @AttributeOverrides][mapped-superclass-mapping]
 
 ## DB
 
@@ -78,6 +79,7 @@
 [directional-association-mapping]: ./jpa/directional-association-mapping.md
 [association-mapping-type]: ./jpa/association-mapping-type.md
 [inheritance-mapping]: ./jpa/inheritance-mapping.md
+[mapped-superclass-mapping]: ./jpa/mapped-superclass-mapping.md
 
 [db]: ./database
 [index]: ./database/index.md
