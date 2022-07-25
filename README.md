@@ -33,6 +33,7 @@
 - [연관관계 - N:1, 1:N, 1:1, N:N][association-mapping-type]
 - [상속 관계 매핑][inheritance-mapping]
 - [@MappedSuperclass, @AttributeOverrides][mapped-superclass-mapping]
+- [Cascade, OrphanRemoval][cascade-orphanremoval]
 
 ## DB
 
@@ -80,6 +81,7 @@
 [association-mapping-type]: ./jpa/association-mapping-type.md
 [inheritance-mapping]: ./jpa/inheritance-mapping.md
 [mapped-superclass-mapping]: ./jpa/mapped-superclass-mapping.md
+[cascade-orphanremoval]: ./jpa/cascade-orphanremoval.md
 
 [db]: ./database
 [index]: ./database/index.md
