@@ -71,6 +71,20 @@ void distinct() throws Exception {
 }
 ```
 
+```sql
+select
+    distinct person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age=?
+```
+
 ## And
 
 ```java
@@ -84,6 +98,21 @@ void and() throws Exception {
     persons = personRepository.findByAgeAndWeight(27, 69);
     assertThat(persons).isEmpty();
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age=? 
+    and person0_.weight=?
 ```
 
 ## Or
@@ -104,6 +133,21 @@ void or() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age=? 
+    or person0_.weight=?
+```
+
 ## Is, Equals
 
 ```java
@@ -122,6 +166,20 @@ void is_equals() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username=?
+```
+
 ## Between
 
 ```java
@@ -135,6 +193,20 @@ void between() throws Exception {
     persons = personRepository.findByAgeBetween(30, 40);
     assertThat(persons).isEmpty();
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age between ? and ?
 ```
 
 ## LessThan, LessThanEqual, GreaterThan, GreaterThanEqual
@@ -161,6 +233,24 @@ void lessThan_greaterThan() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age<?
+    person0_.age<=?
+    person0_.age>?
+    person0_.age>=?
+
+```
+
 ## Before, After
 
 ```java
@@ -179,6 +269,21 @@ void before_after() throws Exception {
     persons = personRepository.findByAgeAfter(26);
     assertThat(persons).hasSize(2);
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age<?
+    person0_.age>?
 ```
 
 ## Null, NotNull
@@ -203,6 +308,21 @@ void null_notNull() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.age is null
+    person0_.age is not null
+```
+
 ## Like, NotLike
 
 ```java
@@ -220,6 +340,21 @@ void like_notLike() throws Exception {
     persons = personRepository.findByUsernameLike("user%");
     assertThat(persons).hasSize(2);
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username not like ? escape ?
+    person0_.username like ? escape ?
 ```
 
 ## StartingWith, EndingWith
@@ -244,6 +379,21 @@ void startingWith_endingWith() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username like '%?' escape ?
+    person0_.username like '?%' escape ?
+```
+
 ## Containing
 
 ```java
@@ -264,6 +414,21 @@ void containing() throws Exception {
     persons = personRepository.findByUsernameNotContaining("erna");
     assertThat(persons).isEmpty();
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username not like "%?%" escape ?
+    person0_.username like "%?%" escape ?
 ```
 
 ## OrderBy
@@ -291,6 +456,21 @@ void orderBy() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+order by
+    person0_.age asc
+    person0_.age desc
+```
+
 ## Not, In, NotIn
 
 ```java
@@ -311,6 +491,21 @@ void not_in_notIn() throws Exception {
 }
 ```
 
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username in ( ? )
+    person0_.username not in ( ? )
+```
+
 ## True, False
 
 ```java
@@ -325,6 +520,21 @@ void true_false() throws Exception {
     personRepository.findByUsedYnFalse();
     assertThat(persons).hasSize(2);
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.used_yn=1
+    person0_.used_yn=0
 ```
 
 ## IgnoreCase
@@ -343,6 +553,20 @@ void ignoreCase() throws Exception {
     persons = personRepository.findByUsernameIgnoreCase("username");
     assertThat(persons).hasSize(3);
 }
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    upper(person0_.username)=upper(?)
 ```
 
 ## References
