@@ -35,6 +35,7 @@
 - [@MappedSuperclass, @AttributeOverrides][mapped-superclass-mapping]
 - [Cascade, OrphanRemoval][cascade-orphanremoval]
 - [쿼리 생성 네이밍에 사용되는 키워드][query-creation]
+- [Get vs Find][get-find]
 
 ## DB
 
@@ -84,6 +85,7 @@
 [mapped-superclass-mapping]: ./jpa/mapped-superclass-mapping.md
 [cascade-orphanremoval]: ./jpa/cascade-orphanremoval.md
 [query-creation]: ./jpa/query-creation.md
+[get-find]: ./jpa/get-find.md
 
 [db]: ./database
 [index]: ./database/index.md
