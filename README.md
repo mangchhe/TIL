@@ -25,6 +25,7 @@
 - [Spring Boot Profile 설정][profile-config]
 - [Configuration 값 가져오는 방법 - @Value, @ConfigurationProperties][property-config]
 - [@Profile, @ActiveProfiles][profile-activeprofiles]
+- [날짜 다루기 - @DateTimeFormat, @JsonFormat][datetimeformat-jsonformat]
 
 ## JPA
 
@@ -76,6 +77,7 @@
 [profile-config]: ./spring/profile-config.md
 [property-config]: ./spring/property-config.md
 [profile-activeprofiles]: ./spring/profile-activeprofiles.md
+[datetimeformat-jsonformat]: ./spring/datetimeformat-jsonformat.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
