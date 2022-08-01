@@ -4,6 +4,8 @@
 
 - [사전 준비](#사전-준비)
 - [Distinct](#Distinct)
+- [First](#First)
+- [Top](#Top)
 - [And](#And)
 - [Or](#Or)
 - [Is, Equals](#Is,-Equals)
@@ -83,6 +85,54 @@ from
     person person0_ 
 where
     person0_.age=?
+```
+
+## First
+
+```java
+@Test
+void first() throws Exception {
+    List<Person> persons = personRepository.findFirst10ByUsername("username");
+    assertThat(persons).hasSize(2);
+}
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username=? limit ?
+```
+
+## Top
+
+```java
+@Test
+void top() throws Exception {
+    List<Person> persons = personRepository.findTop10ByUsername("username");
+    assertThat(persons).hasSize(2);
+}
+```
+
+```sql
+select
+    person0_.id as id1_0_,
+    person0_.age as age2_0_,
+    person0_.height as height3_0_,
+    person0_.used_yn as used_yn4_0_,
+    person0_.username as username5_0_,
+    person0_.weight as weight6_0_ 
+from
+    person person0_ 
+where
+    person0_.username=? limit ?
 ```
 
 ## And
