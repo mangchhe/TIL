@@ -38,6 +38,7 @@
 - [쿼리 생성 네이밍에 사용되는 키워드][query-creation]
 - [Get vs Find][get-find]
 - [Sort, Pageable, Slice, Page][sort-pageable-slice-page]
+- [Auditing, AuditorAware][auditing-auditoraware]
 
 ## DB
 
@@ -90,6 +91,7 @@
 [query-creation]: ./jpa/query-creation.md
 [get-find]: ./jpa/get-find.md
 [sort-pageable-slice-page]: ./jpa/sort-pageable-slice-page.md
+[auditing-auditoraware]: ./jpa/auditing-auditoraware.md
 
 [db]: ./database
 [index]: ./database/index.md
