@@ -64,3 +64,7 @@ public class UserAuditorAware implements AuditorAware<String> {
 	}
 }
 ```
+
+## References
+
+- [https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#auditing](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#auditing)
