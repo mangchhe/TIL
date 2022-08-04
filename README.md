@@ -39,6 +39,7 @@
 - [Get vs Find][get-find]
 - [Sort, Pageable, Slice, Page][sort-pageable-slice-page]
 - [Auditing, AuditorAware][auditing-auditoraware]
+- [Entity Lifecycle Events][entity-lifecycle-events]
 
 ## DB
 
@@ -92,6 +93,7 @@
 [get-find]: ./jpa/get-find.md
 [sort-pageable-slice-page]: ./jpa/sort-pageable-slice-page.md
 [auditing-auditoraware]: ./jpa/auditing-auditoraware.md
+[entity-lifecycle-events]: ./jpa/entity-lifecycle-events.md
 
 [db]: ./database
 [index]: ./database/index.md
