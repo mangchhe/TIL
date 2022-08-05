@@ -40,6 +40,7 @@
 - [Sort, Pageable, Slice, Page][sort-pageable-slice-page]
 - [Auditing, AuditorAware][auditing-auditoraware]
 - [Entity Lifecycle Events][entity-lifecycle-events]
+- [Fetch Join - JPQL, EntityGraph][fetch-join-jpql-entitygraph]
 
 ## DB
 
@@ -94,6 +95,7 @@
 [sort-pageable-slice-page]: ./jpa/sort-pageable-slice-page.md
 [auditing-auditoraware]: ./jpa/auditing-auditoraware.md
 [entity-lifecycle-events]: ./jpa/entity-lifecycle-events.md
+[fetch-join-jpql-entitygraph]: ./jpa/fetch-join-jpql-entitygraph.md
 
 [db]: ./database
 [index]: ./database/index.md
