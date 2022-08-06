@@ -64,7 +64,7 @@ where
 - attributePaths : 페치 조인할 속성을 설정한다.
 - EntityGraph.EntityGraphType
     - FETCH (Default) : 속성으로 지정된 것은 EAGER, 그 외에는 LAZY로 처리된다.
-    - LOAD : 속성으로 지정된 것은 EAGER, 그 외에는 엔티티에서 지정되었거나 그렇지 않다면 기본 FetchType으로 처리된다.
+    - LOAD : 속성으로 지정된 것은 EAGER, 그 외에는 엔티티에서 지정된 값, 지정되지 않았다면 기본 FetchType으로 처리된다.
 
 ```java
 public interface CommentRepository extends JpaRepository<Comment, Long> {
@@ -74,7 +74,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 }
 ```
 
-- JPQL로 했을 때와 차이점은 left outer join이 된다는 점을 명심해야한다. 잘못하다간 원치 않은 값이 나올 수 있음
+- JPQL로 했을 때와 차이점은 left outer join이 된다는 점을 명심해야한다. 잘못하다간 원치 않은 값이 나올 수 있다.
 
 ```sql
 select
@@ -89,6 +89,93 @@ from
 left outer join
     post post1_ 
         on comment0_.post_id=post1_.post_id 
+where
+    comment0_.comment_id=?
+```
+
+### EntityGraphType TEST
+
+```java
+@Entity
+public class Test {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+}
+```
+
+```java
+@Entity
+public class Comment {
+
+    ...
+
+    // 추가
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "test_id")
+    private Test test;
+}
+```
+
+#### FETCH
+
+- 기본값
+- 속성으로 지정된 것은 EAGER, 그 외에는 LAZY로 처리된다.
+
+```java
+@EntityGraph(attributePaths = {"post"}, type = EntityGraph.EntityGraphType.FETCH)
+Optional<Comment> findById(Long id);
+```
+
+```sql
+select
+    comment0_.comment_id as comment_1_0_0_,
+    comment0_.content as content2_0_0_,
+    comment0_.post_id as post_id3_0_0_,
+    comment0_.test_id as test_id4_0_0_,
+    post1_.post_id as post_id1_2_1_,
+    post1_.content as content2_2_1_,
+    post1_.title as title3_2_1_,
+    test2_.id as id1_3_2_ 
+from
+    comment comment0_ 
+left outer join
+    post post1_ 
+        on comment0_.post_id=post1_.post_id 
+where
+    comment0_.comment_id=?
+```
+
+#### LOAD
+
+- 속성으로 지정된 것은 EAGER, 그 외에는 엔티티에서 지정된 값, 지정되지 않았다면 기본 FetchType으로 처리된다.
+
+```java
+@EntityGraph(attributePaths = {"post"}, type = EntityGraph.EntityGraphType.LOAD)
+Optional<Comment> findById(Long id);
+```
+
+- Test 엔티티의 fetch 속성은 EAGER이기 때문에 EAGER을 따라간다.
+
+```sql
+select
+    comment0_.comment_id as comment_1_0_0_,
+    comment0_.content as content2_0_0_,
+    comment0_.post_id as post_id3_0_0_,
+    comment0_.test_id as test_id4_0_0_,
+    post1_.post_id as post_id1_2_1_,
+    post1_.content as content2_2_1_,
+    post1_.title as title3_2_1_,
+    test2_.id as id1_3_2_ 
+from
+    comment comment0_ 
+left outer join
+    post post1_ 
+        on comment0_.post_id=post1_.post_id 
+left outer join
+    test test2_ 
+        on comment0_.test_id=test2_.id 
 where
     comment0_.comment_id=?
 ```
