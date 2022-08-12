@@ -23,7 +23,11 @@
 
 - 클래스의 기준은 IP 주소를 앞에서 8비트씩 나눈 그룹을 조합하여 네트워크 부와 호스트 부를 정하였다.
 
+![ip-class png](https://user-images.githubusercontent.com/50051656/184358031-4e14dde7-77a4-4d16-bf6f-43bf8784784c.png)
+
 ### A Class
+
+![ip-a](https://user-images.githubusercontent.com/50051656/184358280-8779dab0-27c0-43f9-a578-8ac0a141685c.png)
 
 - xxxx / xxxx.xxxx.xxxx, 앞 8비트를 네트워크 부, 뒤 24비트를 호스트 부로 한다.
 - 네트워크 부의 첫 비트는 식별 비트인 0이 할당되기 때문에 00000000 ~ 01111111로 0~127까지 번호가 부여된다.
@@ -32,11 +36,15 @@
 
 ### B Class
 
+![ip-b](https://user-images.githubusercontent.com/50051656/184358285-3c205b8f-910a-4c52-ae8b-e90ba1897b77.png)
+
 - xxxx.xxxx / xxxx.xxxx, 앞 16비트를 네트워크 부, 뒤 16비트를 호스트 부로 한다.
 - B 클래스의 식별 비트는 10으로 네트워크 부는 10000000 ~ 10111111로 128.0 ~ 191.255 번호가 할당된다.
 - 총 가질 수 있는 IP 주소의 범위는 128.0.0.0 ~ 191.255.255.255로 3^30개 만큼 가질 수 있다.
 
 ### C Class
+
+![ip-c](https://user-images.githubusercontent.com/50051656/184358287-b332aac2-4c09-4dc0-941f-a4389777d4a6.png)
 
 - xxxx.xxxx.xxxx / xxxx, 앞 24비트를 네트워크 부, 뒤 8비트를 호스트 부로 한다.
 - C 클래스의 식별 비트는 110으로 네트워크 부는 11000000 ~ 11011111로 192.0.0.0 ~ 223.255.255 번호가 할당된다.
@@ -46,7 +54,8 @@
 
 - xxx.xxx.xxx.0, xxx.xxx.xxx.255와 같이 호스트 부의 모든 비트가 0 또는 1이면 특수 목적으로 사용된다.
 - 해당 주소는 자신의 IP 주소로 설정할 수 없고 특수 목적인 네트워크 주소, 브로드캐스트로 사용된다
-- 브로드캐스트는 하나의 네트워크 내에서 모든 호스트에게 데이터를 보낼 수 있는 IP 주소를 의미한다.
+- 네트워크 주소는 xxx.xxx.xxx.0로 네트워크 자체를 의미하며 라우팅 프로토콜에서 네트워크를 지칭할 때 사용한다.
+- 브로드캐스트 주소는 xxx.xxx.xxx.255로 하나의 네트워크 내에서 모든 호스트에게 데이터를 보낼 수 있는 IP 주소를 의미한다.
 
 ## 서브넷팅, 서브넷
 
@@ -63,8 +72,19 @@
 - ex) 126.125.35.23 -> 255.255.255.0
 - 서브넷 마스크를 이용하면 8비트 단위가 아니라 1비트 단위로도 네트워크 부를 구성할 수 있기 때문에 좀 더 세분화된 네트워크를 만들 수 있다.
 
+![subnet-mask](https://user-images.githubusercontent.com/50051656/184360058-dcbb0e2c-c58c-47e0-b931-b3f498252f89.png)
+
 ### 프리픽스 표기법
 
 - 서브넷 마스크를 슬래시와 네트워크 부 비트 수를 나타내는 프리픽스 표기법을 사용할 수 있다.
 - 0.255.0.1/8 -> 앞에 8비트가 네트워크 부
 - 0.255.0.1/16 -> 앞에 16비트가 네트워크 부
+
+### 가능한 서브넷 마스크 값
+
+![available-subnet-mask](https://user-images.githubusercontent.com/50051656/184360049-730eadf2-5545-4970-ba26-2f49de078dd9.png)
+
+## References
+
+- [https://code-lab1.tistory.com/33](https://code-lab1.tistory.com/33)
+- [https://better-together.tistory.com/118](https://better-together.tistory.com/118)
