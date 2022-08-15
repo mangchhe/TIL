@@ -26,6 +26,8 @@
 - [Configuration 값 가져오는 방법 - @Value, @ConfigurationProperties][property-config]
 - [@Profile, @ActiveProfiles][profile-activeprofiles]
 - [날짜 다루기 - @DateTimeFormat, @JsonFormat][datetimeformat-jsonformat]
+- [Redisson으로 분산 락 구현][redisson]
+- [Spring Events - @EventListener, @TransactionalEventListener][spring-events]
 
 ## JPA
 
@@ -86,6 +88,8 @@
 [property-config]: ./spring/property-config.md
 [profile-activeprofiles]: ./spring/profile-activeprofiles.md
 [datetimeformat-jsonformat]: ./spring/datetimeformat-jsonformat.md
+[redisson]: https://github.com/TIL-Repo/redisson-study
+[spring-events]: https://github.com/TIL-Repo/spring-study/tree/main/EventListener
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
