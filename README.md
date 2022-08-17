@@ -28,6 +28,7 @@
 - [날짜 다루기 - @DateTimeFormat, @JsonFormat][datetimeformat-jsonformat]
 - [Redisson으로 분산 락 구현][redisson]
 - [Spring Events - @EventListener, @TransactionalEventListener][spring-events]
+- [Transaction Propagation][transaction-propagation]
 
 ## JPA
 
@@ -90,6 +91,7 @@
 [datetimeformat-jsonformat]: ./spring/datetimeformat-jsonformat.md
 [redisson]: https://github.com/TIL-Repo/redisson-study
 [spring-events]: https://github.com/TIL-Repo/spring-study/tree/main/EventListener
+[transaction-propagation]: ./spring/transaction-propagation.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
