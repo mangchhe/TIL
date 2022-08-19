@@ -44,6 +44,7 @@
 - [Auditing, AuditorAware][auditing-auditoraware]
 - [Entity Lifecycle Events][entity-lifecycle-events]
 - [Fetch Join - JPQL, EntityGraph][fetch-join-jpql-entitygraph]
+- [Enumerated, AttributeConverter][enumerated-attributeconverter]
 
 ## DB
 
@@ -106,6 +107,7 @@
 [auditing-auditoraware]: ./jpa/auditing-auditoraware.md
 [entity-lifecycle-events]: ./jpa/entity-lifecycle-events.md
 [fetch-join-jpql-entitygraph]: ./jpa/fetch-join-jpql-entitygraph.md
+[enumerated-attributeconverter]: ./jpa/enumerated-attributeconverter.md
 
 [db]: ./database
 [index]: ./database/index.md
