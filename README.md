@@ -7,6 +7,7 @@
 - [Synchronized, Volatile, Atomic Type][synchronized-volatile-atomic]
 - [ThreadLocal][threadlocal]
 - [SerialVersionUID 지정하는 이유][serialVersionUID]
+- [Enum 조회 성능 높이기][enum-stream-map]
 
 ## Spring
 
@@ -73,6 +74,7 @@
 [threadlocal]: ./java/threadlocal.md
 [jdk-dynamic-proxy-cglib]: ./java/jdk-dynamic-proxy-cglib.md
 [serialVersionUID]: ./java/serialVersionUID.md
+[enum-stream-map]: ./java/enum-stream-map.md 
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
