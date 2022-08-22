@@ -30,6 +30,7 @@
 - [Redisson으로 분산 락 구현][redisson]
 - [Spring Events - @EventListener, @TransactionalEventListener][spring-events]
 - [Transaction Propagation][transaction-propagation]
+- [Servlet][servlet-basic]
 
 ## JPA
 
@@ -95,6 +96,7 @@
 [redisson]: https://github.com/TIL-Repo/redisson-study
 [spring-events]: https://github.com/TIL-Repo/spring-study/tree/main/EventListener
 [transaction-propagation]: ./spring/transaction-propagation.md
+[servlet-basic]: ./spring/servlet-basic.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
