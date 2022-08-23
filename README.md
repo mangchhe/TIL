@@ -31,6 +31,7 @@
 - [Spring Events - @EventListener, @TransactionalEventListener][spring-events]
 - [Transaction Propagation][transaction-propagation]
 - [Servlet][servlet-basic]
+- [JPA에서 JSON Column 사용하기][jpa-json-column]
 
 ## JPA
 
@@ -112,6 +113,7 @@
 [entity-lifecycle-events]: ./jpa/entity-lifecycle-events.md
 [fetch-join-jpql-entitygraph]: ./jpa/fetch-join-jpql-entitygraph.md
 [enumerated-attributeconverter]: ./jpa/enumerated-attributeconverter.md
+[jpa-json-column]: ./spring/jpa-json-column.md
 
 [db]: ./database
 [index]: ./database/index.md
