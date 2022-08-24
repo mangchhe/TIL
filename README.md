@@ -31,7 +31,9 @@
 - [Spring Events - @EventListener, @TransactionalEventListener][spring-events]
 - [Transaction Propagation][transaction-propagation]
 - [Servlet][servlet-basic]
-- [JPA에서 JSON Column 사용하기][jpa-json-column]
+- [Interceptor 구현][interceptor]
+- [Filter 구현][filter]
+- [캐시 사용하기 - @Cacheable, @CachePut, @CacheEvict][cacheable-cacheput-cacheevict]
 
 ## JPA
 
@@ -48,6 +50,8 @@
 - [Entity Lifecycle Events][entity-lifecycle-events]
 - [Fetch Join - JPQL, EntityGraph][fetch-join-jpql-entitygraph]
 - [Enumerated, AttributeConverter][enumerated-attributeconverter]
+- [JPA에서 JSON Column 사용하기][jpa-json-column]
+- [JPA 동적 쿼리 만들기 - @DynamicInsert, @DynamicUpdate][dynamicinsert-dynamicupdate]
 
 ## DB
 
@@ -98,6 +102,9 @@
 [spring-events]: https://github.com/TIL-Repo/spring-study/tree/main/EventListener
 [transaction-propagation]: ./spring/transaction-propagation.md
 [servlet-basic]: ./spring/servlet-basic.md
+[interceptor]: https://mangchhe.github.io/springboot/2021/12/08/SpringBootInterceptor
+[filter]: https://mangchhe.github.io/springboot/2021/12/02/SpringBootFilter
+[cacheable-cacheput-cacheevict]: https://mangchhe.github.io/springboot/2021/09/15/SpringBootCache
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
@@ -114,6 +121,7 @@
 [fetch-join-jpql-entitygraph]: ./jpa/fetch-join-jpql-entitygraph.md
 [enumerated-attributeconverter]: ./jpa/enumerated-attributeconverter.md
 [jpa-json-column]: ./spring/jpa-json-column.md
+[dynamicinsert-dynamicupdate]: https://mangchhe.github.io/jpa/2021/09/06/EntityDynamicQuery
 
 [db]: ./database
 [index]: ./database/index.md
