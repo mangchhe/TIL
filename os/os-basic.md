@@ -130,5 +130,3 @@
     - Touch-Screen Interface : AOS, IOS
 - Program가 OS와 의사소통하는 방법
     - System Calls : OS API
-       
-<img width="939" alt="operating-system-services" src="https://user-images.githubusercontent.com/50051656/187085055-10f8daaa-977b-4675-8bbb-42361c68e9a1.png">

@@ -68,6 +68,7 @@
 ## OS
 
 - [운영체제의 개념과 구조][os-basic]
+- [프로세스][process-basic]
 
 ## Network
 
@@ -139,6 +140,7 @@
 
 [os]: ./os
 [os-basic]: ./os/os-basic.md
+[process-basic]: ./os/process-basic.md
 
 [network]: ./network
 [ip-class-subnetmask]: ./network/ip-class-subnetmask.md
