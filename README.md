@@ -34,6 +34,7 @@
 - [Interceptor 구현][interceptor]
 - [Filter 구현][filter]
 - [캐시 사용하기 - @Cacheable, @CachePut, @CacheEvict][cacheable-cacheput-cacheevict]
+- [중복 타입 Bean 솔루션 - @Primary, @Qualifier][duplicate-bean-primary-qualifier]
 
 ## JPA
 
@@ -110,6 +111,7 @@
 [interceptor]: https://mangchhe.github.io/springboot/2021/12/08/SpringBootInterceptor
 [filter]: https://mangchhe.github.io/springboot/2021/12/02/SpringBootFilter
 [cacheable-cacheput-cacheevict]: https://mangchhe.github.io/springboot/2021/09/15/SpringBootCache
+[duplicate-bean-primary-qualifier]: ./spring/duplicate-bean-primary-qualifier.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
