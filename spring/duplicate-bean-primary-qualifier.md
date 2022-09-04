@@ -82,7 +82,7 @@ public class HelloController {
 }
 ```
 
-## Quilifier
+## Qualifier
 
 - `@Qualifier(value)`를 붙여주게 되면 같은 타입의 여러 개의 Bean을 찾았을 때 value에 따라 주입해줄 Bean을 지정할 수 있다.
 - 이때 `@RequiredArgsConstructor`를 같이 사용할 수 없다. (이유는 해당 어노테이션이 생성자를 만들고 주입할 때 Qulifier를 고려하지 않음)

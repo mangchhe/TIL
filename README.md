@@ -53,6 +53,7 @@
 - [Enumerated, AttributeConverter][enumerated-attributeconverter]
 - [JPA에서 JSON Column 사용하기][jpa-json-column]
 - [JPA 동적 쿼리 만들기 - @DynamicInsert, @DynamicUpdate][dynamicinsert-dynamicupdate]
+- [JPA Multi Database 설정][jpa-multi-database]
 
 ## DB
 
@@ -129,6 +130,7 @@
 [enumerated-attributeconverter]: ./jpa/enumerated-attributeconverter.md
 [jpa-json-column]: ./spring/jpa-json-column.md
 [dynamicinsert-dynamicupdate]: https://mangchhe.github.io/jpa/2021/09/06/EntityDynamicQuery
+[jpa-multi-database]: ./jpa/jpa-multi-database.md
 
 [db]: ./database
 [index]: ./database/index.md
