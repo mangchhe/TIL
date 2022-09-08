@@ -76,6 +76,10 @@
 
 - [IP 체계, 서브넷 마스크][ip-class-subnetmask]
 
+## Kafka
+
+- [Kafka를 사용하는 이유와 특징][why-use-kafka]
+
 ## Tool
 
 - [Intellij .http 사용 방법][intellij-http-request]
@@ -148,6 +152,9 @@
 
 [network]: ./network
 [ip-class-subnetmask]: ./network/ip-class-subnetmask.md
+
+[kafka]: ./kafka
+[why-use-kafka]: ./kafka/why-use-kafka.md
 
 [tool]: ./tool
 [intellij-http-request]: ./tool/intellij-http-request.md
