@@ -35,6 +35,7 @@
 - [Filter 구현][filter]
 - [캐시 사용하기 - @Cacheable, @CachePut, @CacheEvict][cacheable-cacheput-cacheevict]
 - [중복 타입 Bean 솔루션 - @Primary, @Qualifier][duplicate-bean-primary-qualifier]
+- [동시성 이슈 해결 방법 - Mysql, Redis][concurrency-issue-mysql-redis]
 
 ## JPA
 
@@ -117,6 +118,7 @@
 [filter]: https://mangchhe.github.io/springboot/2021/12/02/SpringBootFilter
 [cacheable-cacheput-cacheevict]: https://mangchhe.github.io/springboot/2021/09/15/SpringBootCache
 [duplicate-bean-primary-qualifier]: ./spring/duplicate-bean-primary-qualifier.md
+[concurrency-issue-mysql-redis]: ./spring/concurrency-issue-mysql-redis.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
