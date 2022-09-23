@@ -64,6 +64,19 @@
 - [Optimistic Lock, Pessimistic Lock][optimistic-pessimistic-lock]
 - [Nested Loop Join, Sort Merge Join, Hash Join][nl-sort-merge-hash-join]
 
+## Kafka
+
+- [Kafka를 사용하는 이유와 특징][why-use-kafka]
+- [Kafka 기본 개념][kafka-basic]
+- [빅데이터 아키텍처][kafka-architecture]
+- [Kafka CLI 활용][kafka-cli-command]
+- [Kafka Producer][kafka-producer]
+- [Kafka Producer Application 구현][kafka-producer-application]
+- [Kafka Consumer][kafka-consumer]
+- [Kafka Consumer Application 구현][kafka-consumer-application]
+- [Consumer Lag & Monitoring][kafka-consumer-lag-monitoring]
+- [Idempotence Producer, Transaction Producer & Consumer][kakfa-idempotence-transaction]
+
 ## Web
 
 - [HttpOnly, Secure - Cookie][cookie-httponly-secure]
@@ -76,10 +89,6 @@
 ## Network
 
 - [IP 체계, 서브넷 마스크][ip-class-subnetmask]
-
-## Kafka
-
-- [Kafka를 사용하는 이유와 특징][why-use-kafka]
 
 ## Tool
 
@@ -145,6 +154,18 @@
 [optimistic-pessimistic-lock]: ./database/optimistic-pessimistic-lock.md
 [nl-sort-merge-hash-join]: ./database/nl-sort-merge-hash-join.md
 
+[kafka]: ./kafka
+[why-use-kafka]: ./kafka/why-use-kafka.md
+[kafka-basic]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-basic.md
+[kafka-architecture]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-architecture.md
+[kafka-cli-command]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-cli-command.md
+[kafka-producer]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-producer.md
+[kafka-producer-application]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-producer-application.md
+[kafka-consumer]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-consumer.md
+[kafka-consumer-application]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-consumer-application.md
+[kafka-consumer-lag-monitoring]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-consumer-lag-monitoring.md
+[kakfa-idempotence-transaction]: https://github.com/mangchhe/_TIL/blob/main/kafka/kakfa-idempotence-transaction.md
+ 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
 
@@ -154,9 +175,6 @@
 
 [network]: ./network
 [ip-class-subnetmask]: ./network/ip-class-subnetmask.md
-
-[kafka]: ./kafka
-[why-use-kafka]: ./kafka/why-use-kafka.md
 
 [tool]: ./tool
 [intellij-http-request]: ./tool/intellij-http-request.md
