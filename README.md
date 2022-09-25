@@ -9,6 +9,10 @@
 - [SerialVersionUID 지정하는 이유][serialVersionUID]
 - [Enum 조회 성능 높이기][enum-stream-map]
 
+## Kotlin
+
+- [코틀린 기본 문법][kotlin-basic]
+
 ## Spring
 
 - [Multi Module with Gradle][multi-module-with-gradle]
@@ -101,7 +105,10 @@
 [threadlocal]: ./java/threadlocal.md
 [jdk-dynamic-proxy-cglib]: ./java/jdk-dynamic-proxy-cglib.md
 [serialVersionUID]: ./java/serialVersionUID.md
-[enum-stream-map]: ./java/enum-stream-map.md 
+[enum-stream-map]: ./java/enum-stream-map.md
+
+[kotlin]: ./kotlin
+[kotlin-basic]: ./kotlin/kotlin-basic.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
