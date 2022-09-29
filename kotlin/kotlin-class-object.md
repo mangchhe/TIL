@@ -344,6 +344,8 @@ fun main() {
 
 ## 객체
 
+### 싱글톤 클래스
+
 - `class` 대신 `object` 키워드를 사용해서 클래스를 만들게 되면 해당 객체를 싱글톤으로 만들 수 있다.
 
 ```kotlin
@@ -360,3 +362,102 @@ object SingletonClass {
     var text: String = "Hello World!"
 }
 ```
+
+### 동반 객체
+
+- 내포된 클래스와 마찬가지로 내포 객체 또한 인스턴스가 생기면 자신을 둘러싼 클래스의 비공개 멤버에 접근 가능하다. 팩토리 디자인 패턴 구현에 있어 유용.
+- 생성자를 사용하여 어떤 사전 검사 결과에 따라 널을 반환하거나 상위 타입에 속하는 다른 타입 객체를 반환하고 싶을 때 생성자는 오직 자신의 타입 객체를 반환하거나 예외를 던질 수 있기 때문에 불가능하다.
+- 이를 해결하기 위해 생성자를 비공개로 지정해 클래스 외부에서 사용할 수 없게 하고 내포된 객체에 팩토리 메서드 역할을 하는 함수를 정의하고 그 함수 안에 필요한 객체 생성자를 호출하는 것이다.
+
+```kotlin
+fun main(args: Array<String>) {
+    val app = Application.Factory.create(args) ?: return
+}
+
+class Application private constructor(val name: String) {
+    object Factory {
+        fun create(args: Array<String>): Application? {
+            val name = args.firstOrNull() ?: return null
+            return Application(name)
+        }
+    }
+}
+```
+
+- 위 소스는 매번 내포된 객체의 이름을 지정해서 객체를 생성해야 한다.
+- `companion` 키워드를 사용함으로서 외부 클래스 이름을 사용하여 객체를 생성할 수 있다.
+
+```kotlin
+fun main(args: Array<String>) {
+    val app = Application.create(args) ?: return
+    val app = Application.Factory.create(args) ?: return // 이것도 불필요하지만 가능은 함.
+}
+
+class Application private constructor(val name: String) {
+    companion object Factory {
+        fun create(args: Array<String>): Application? {
+            val name = args.firstOrNull() ?: return null
+            return Application(name)
+        }
+    }
+}
+```
+
+- 동반 객체의 경우 이름을 생략할 수 있고 디폴트 이름은 `Companion`이 된다.
+- 한 클래스에 동반 객체가 둘 이상 있을 수 없다.
+
+```kotlin
+class Application private constructor(val name: String) {
+    companion object {
+        fun create(args: Array<String>): Application? {
+            val name = args.firstOrNull() ?: return null
+            return Application(name)
+        }
+    }
+}
+```
+
+### 객체 식
+
+- 코틀린은 명시적인 선언 없이 객체를 바로 생성할 수 있는 특별한 식을 제공한다.
+- 자바의 익명 클래스와 유사
+
+```kotlin
+fun main() {
+    fun Point(x: Int, y: Int) = object {
+        val x = x
+        val y = y
+    }
+
+    val point = Point(2, 2)
+}
+
+fun main() {
+    val point = object {
+        val x = 2
+        val y = 2
+    }
+    
+    point.x
+    point.y
+}
+```
+
+- 익명 객체 타입은 지역 선언이나 비공개 선언에만 전달될 수 있다.
+- point라는 익명 객체를 최상위 위치로 정의하면 객체 멤버를 접근할 때 에러를 발생시킨다.
+
+```kotlin
+val point = object {
+    val x = 2
+    val y = 2
+}
+
+fun main() {
+    point.x // Error
+    point.y // Error
+}
+```
+
+## References
+
+- [코틀린 완벽 가이드](https://books.google.co.kr/books/about/%EC%BD%94%ED%8B%80%EB%A6%B0_%EC%99%84%EB%B2%BD_%EA%B0%80%EC%9D%B4%EB%93%9C.html?id=851kEAAAQBAJ&source=kp_book_description&redir_esc=y)
