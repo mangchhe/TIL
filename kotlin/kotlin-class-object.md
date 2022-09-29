@@ -286,3 +286,77 @@ class Content {
     }
 }
 ```
+
+### 커스텀 접근자 사용하기
+
+- 변수와 함수의 동작을 한 선언 안에 조합할 수 있는 기능. 커스텀 접근자를 통해 이뤄진다.
+- 프로퍼티 값을 읽거나 쓸 때 호출되는 특별한 함수이다.
+
+```kotlin
+fun main() {
+    val person = Person("Joohyun", "Ha")
+    person.fullName
+    person.age = 20
+}
+
+class Person(val firstName: String, val familyName: String) {
+    val fullName: String get(): String {
+        return "$firstName $familyName"
+    }
+
+    var age: Int? = null
+        set(value) {
+            field = value?.times(2)
+        }
+}
+```
+
+- 프로퍼티 접근자에 별도로 가시성 변경자를 붙일 수도 있다.
+
+```kotlin
+fun main() {
+    val person = Person("Joohyun", "Ha")
+    person.updatedAt = Timestamp.valueOf(LocalDateTime.now()) // Error
+}
+
+class Person(val firstName: String, val familyName: String) {
+    var updatedAt: Timestamp? = null
+        private set
+}
+```
+
+### 지연 계산 프로퍼티
+
+- 프로퍼티를 lazy로 계산하게 되면 실제 프로퍼티가 읽히기 전에는 계산하지 않는다.
+- lazy 프로퍼티는 thread-safe 하다.
+
+```kotlin
+val now by lazy {
+    println("now was allocated")
+    LocalDateTime.now()
+}
+
+fun main() {
+    println("Hello World!")
+    println(now)
+}
+```
+
+## 객체
+
+- `class` 대신 `object` 키워드를 사용해서 클래스를 만들게 되면 해당 객체를 싱글톤으로 만들 수 있다.
+
+```kotlin
+fun main() {
+    val singletonClass = SingletonClass
+    val singletonClass2 = SingletonClass
+
+    println(singletonClass.text)
+    singletonClass2.text = "Hello Joohyun!"
+    println(singletonClass.text) // Hello Joohyun
+}
+
+object SingletonClass {
+    var text: String = "Hello World!"
+}
+```
