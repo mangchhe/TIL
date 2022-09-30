@@ -13,6 +13,7 @@
 
 - [코틀린 기본 문법][kotlin-basic]
 - [함수 다루기][kotlin-function]
+- [클래스와 객체][kotlin-class-object]
 
 ## Spring
 
@@ -111,6 +112,7 @@
 [kotlin]: ./kotlin
 [kotlin-basic]: ./kotlin/kotlin-basic.md
 [kotlin-function]: ./kotlin/kotlin-function.md
+[kotlin-class-object]: ./kotlin/kotlin-class-object.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
