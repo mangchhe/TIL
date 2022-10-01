@@ -191,3 +191,6 @@ fun main() {
 - 이러한 변환을 적용하려면 재귀 호출한 다음 함수가 아무 동작을 하지 않아야 한다.
 - 만약 꼬리재귀가 아니라면 컴파일러는 경고를 표시하고 일반 재귀 함수로 컴파일한다.
 
+## References
+
+- [코틀린 완벽 가이드](https://books.google.co.kr/books/about/%EC%BD%94%ED%8B%80%EB%A6%B0_%EC%99%84%EB%B2%BD_%EA%B0%80%EC%9D%B4%EB%93%9C.html?id=851kEAAAQBAJ&source=kp_book_description&redir_esc=y)
