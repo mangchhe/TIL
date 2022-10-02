@@ -14,6 +14,8 @@
 - [코틀린 기본 문법][kotlin-basic]
 - [함수 다루기][kotlin-function]
 - [클래스와 객체][kotlin-class-object]
+- [함수형 프로그래밍][kotlin-functional-programming]
+- [영역 함수 (run, with, let, apply, also)][kotlin-scope-functions]
 
 ## Spring
 
@@ -113,6 +115,8 @@
 [kotlin-basic]: ./kotlin/kotlin-basic.md
 [kotlin-function]: ./kotlin/kotlin-function.md
 [kotlin-class-object]: ./kotlin/kotlin-class-object.md
+[kotlin-functional-programming]: ./kotlin/kotlin-functional-programming.md
+[kotlin-scope-functions]: ./kotlin/kotlin-scope-functions.md 
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
