@@ -327,3 +327,21 @@ fun Product?.decreaseQuantity(quantity: Int) {
     this.quantity -= quantity
 }
 ```
+
+## 확장 프로퍼티
+
+```kotlin
+var IntArray.midIndex
+    get() = lastIndex
+    set(value) {
+        this[midIndex] = value
+    }
+
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    println(nums.midIndex)
+    nums.midIndex = 10
+}
+```
+
+- [코틀린 완벽 가이드](https://books.google.co.kr/books/about/%EC%BD%94%ED%8B%80%EB%A6%B0_%EC%99%84%EB%B2%BD_%EA%B0%80%EC%9D%B4%EB%93%9C.html?id=851kEAAAQBAJ&source=kp_book_description&redir_esc=y)
