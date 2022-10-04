@@ -16,6 +16,7 @@
 - [클래스와 객체][kotlin-class-object]
 - [함수형 프로그래밍][kotlin-functional-programming]
 - [영역 함수 (run, with, let, apply, also)][kotlin-scope-functions]
+- [특별 클래스 (Enum, Data, Inline)][kotlin-special-class]
 
 ## Spring
 
@@ -116,7 +117,8 @@
 [kotlin-function]: ./kotlin/kotlin-function.md
 [kotlin-class-object]: ./kotlin/kotlin-class-object.md
 [kotlin-functional-programming]: ./kotlin/kotlin-functional-programming.md
-[kotlin-scope-functions]: ./kotlin/kotlin-scope-functions.md 
+[kotlin-scope-functions]: ./kotlin/kotlin-scope-functions.md
+[kotlin-special-class]: ./kotlin/kotlin-special-class.md
 
 [spring]: ./spring
 [multi-module-with-gradle]: ./spring/multi-module-with-gradle.md 
