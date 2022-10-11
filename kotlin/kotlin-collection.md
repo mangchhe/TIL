@@ -96,3 +96,123 @@ fun main() {
     emptyMap<String, String>().toSortedMap()
 }
 ```
+
+## 기본 컬렉션 연산
+
+### list
+
+```kotlin
+fun main() {
+    for ((key, value) in mapOf(1 to "One", 2 to "Two", 3 to "Three")) {
+        println("$key : $value")
+    }
+
+    sequenceOf(1, 2, 3).forEach { it * it }
+    listOf(1, 2, 3).forEachIndexed { idx, value ->  println("$idx : $value") }
+
+    val list = listOf(1, 2, 3)
+    list.size
+    list.isEmpty()
+    list.contains(4)
+    2 in list
+    list.containsAll(listOf(1, 2, 3, 4))
+
+    val list = arrayListOf(1, 2, 3)
+    list.add(4)
+    list.remove(4)
+    list.addAll(listOf(4, 5))
+    list.removeAll(listOf(1, 2))
+    list.retainAll(listOf(3, 4))
+    list.clear()
+    
+    list += 3
+    list += listOf(3, 4)
+    list -= listOf(1, 3)
+
+    val list = arrayListOf(1, 2, 3, 3, 4, 5, 6)
+    list.get(3) // 3
+    list[3] // 3
+    list.indexOf(3) // 2
+    list.lastIndexOf(3) // 3
+
+    list.set(0, 0)
+    list[0] = 0
+    list.removeAt(6) // [0, 2, 3, 3, 4, 5]
+    list.add(4, 6) // [0, 2, 3, 3, 6, 4, 5]
+    list.subList(1, 5) // [2, 3, 3, 6]
+}
+```
+
+### map
+
+```kotlin
+fun main() {
+    val numMap = mutableMapOf(1 to "One", 2 to "Two", 3 to "Three")
+
+    for ((key, value) in numMap) {
+        println("$key : $value")
+    }
+
+    numMap.isEmpty()
+    numMap.size
+    numMap.get(1)
+    numMap[1]
+    numMap.get(0) // null
+    numMap.getOrDefault(4, "Four")
+    numMap.getOrElse(4) {"Four"}
+    numMap.containsKey(1)
+    numMap.containsValue("One")
+    numMap.keys
+    numMap.values
+    numMap.entries
+
+    numMap.put(4, "Four")
+    numMap[5] = "Five"
+    numMap.remove(5)
+    numMap.putAll(mapOf(6 to "Six", 7 to "Seven"))
+    numMap += 8 to "Eight"
+    numMap -= 1 // key 값을 기준으로 제거
+}
+```
+
+## 컬렉션 원소 접근
+
+```kotlin
+fun main() {
+    val list = listOf(1, 2, 3, 4, 5)
+    list.first() // 1
+    list.last() // 5
+    emptyList<Int>().first() // NoSuchElementException
+    emptyList<Int>().firstOrNull() // null
+    list.first { it > 3 } // 4
+
+    listOf(2).single() // 2
+    list.single() // IllegalArgumentException
+    list.singleOrNull() // null
+
+    list.elementAt(4) // 5
+    list.elementAt(6) // ArrayIndexOutOfBoundsException
+    list.elementAtOrNull(6) // null
+    list.elementAtOrElse(6) {"Hello World!"}
+}
+```
+
+## 컬렉션 조건 검사
+
+```kotlin
+
+fun main() {
+    val list = listOf(1, 2, 3, 4, 5)
+    val map = mapOf(1 to "one", 2 to "two", 3 to "three")
+
+    list.all { it > 4 } // false
+    list.all { it > 0 } // true
+    list.none {it > 5} // true
+    list.none {it > 0} // false
+
+    map.all { it.key > 2 } // false
+    map.all { it.key > 0 } // true
+    map.any { it.key > 2} // true
+    map.any { it.key > 3} // false
+}
+```
