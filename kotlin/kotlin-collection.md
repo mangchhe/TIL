@@ -216,3 +216,79 @@ fun main() {
     map.any { it.key > 3} // false
 }
 ```
+
+## 집계
+
+```kotlin
+fun main() {
+    val list = listOf(1, 2, 3, 4, 5)
+    val map = mapOf(1 to "one", 2 to "two", 3 to "three")
+
+    list.count()
+    list.count { it < 4 }
+    emptyList<Int>().count() // 0
+
+    list.sum()
+    list.sumOf { it * 2 }
+    emptyList<Int>().sum() // 0
+
+    list.average()
+    emptyList<Int>().average() // Double.NaN
+
+    list.minOrNull() // 1
+    list.minOf { it * 2 } // 2
+    list.maxOrNull() // 5
+    emptyList<Int>().maxOrNull() // null
+
+    map.maxByOrNull { it.key } // 3=three
+
+    list.minWithOrNull { o1, o2 -> o1.compareTo(o2) }
+
+    /**
+     * separator : default ", " 구분자 이용
+     * prefix, postfix : 앞 뒤 붙일 내용
+     * limit : 사용할 원소 갯수, -1(무한)
+     * truncated : limit에 의해 모두 보여주지 못할 경우 뒤에 붙는 내용 default ...
+     */
+    list.joinToString()
+
+    list.reduce { acc, i -> acc * i }
+    list.reduceIndexed { index, acc, i -> if (index % 2 == 0) acc * i else acc } // 주의! 첫 번째 원소는 무조건 처리
+    list.reduceRight { i, acc -> acc * i } // 오른쪽부터 시작. 누적 값이 오른쪽에 있다는 것을 명심
+    
+    list.fold("") { acc, i -> acc + i.toString() } // 초기값 지정할 수 있다.
+    list.foldIndexed(2) { index, acc, i -> if (index % 2 == 0) acc * i else acc } // 30
+    list.foldRight("") { i, acc -> acc + i.toString() } // 초기값 지정할 수 있다.
+}
+```
+
+## 걸러내기
+
+```kotlin
+fun main() {
+    val list = listOf(1, 2, 3, 4, 5)
+    val map = mapOf(1 to "one", 2 to "two", 3 to "three")
+
+    list.filter { it > 2 } // [3, 4, 5]
+    map.filter { it.key > 2 } // {3=three}
+
+    /**
+     * 걸러낸 컬렉션을 이미 존재하는 가변 컬렉션에 넣고 싶을 때 사용 접미사 "To"
+     * 원본 컬렉션을 타겟 컬렉션으로 지정하면 ConcurrentModificationException 발생
+     */
+    list.filterTo(arrayListOf()) { it < 3 }
+
+    map.filterKeys { it > 2 } // {3=three}
+    map.filterValues { it != "one" } // {2=two, 3=three}
+
+    list.filterNot { it > 2 } // [1, 2]
+
+    list.filterIndexed { index, i -> index > 2 && i < 5 } // [4]
+
+    list.filterNotNull() // null을 거르는 필터
+
+    list.filterIsInstance<Int>() // 특정 타입 필터
+
+    val (even, odd) = list.partition { it % 2 == 0 } // 조건을 만족하는 부분과 그렇지 않는 부분을 구분하여 부분 컬렉션으로 만들어준다.
+}
+```
