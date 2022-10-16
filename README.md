@@ -85,6 +85,11 @@
 - [Kafka Consumer Application 구현][kafka-consumer-application]
 - [Consumer Lag & Monitoring][kafka-consumer-lag-monitoring]
 - [Idempotence Producer, Transaction Producer & Consumer][kakfa-idempotence-transaction]
+- [Kafka Streams][kafka-streams]
+- [Kafka Streams Application 구현][kafka-streams-application]
+- [Kafka Streams Window Processing][kafka-streams-window-processing]
+- [Kafka Streams Queryable Store][kafka-streams-queryable-store]
+- [Kafka Connect][kafka-connect]
 
 ## Web
 
@@ -182,7 +187,12 @@
 [kafka-consumer-application]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-consumer-application.md
 [kafka-consumer-lag-monitoring]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-consumer-lag-monitoring.md
 [kakfa-idempotence-transaction]: https://github.com/mangchhe/_TIL/blob/main/kafka/kakfa-idempotence-transaction.md
- 
+[kafka-streams]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams.md
+[kafka-streams-application]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-application.md
+[kafka-streams-window-processing]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-window-processing.md
+[kafka-streams-queryable-store]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-queryable-store.md
+[kafka-connect]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-connect.md
+
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
 
