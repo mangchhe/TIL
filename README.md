@@ -108,6 +108,19 @@
 
 - [Intellij .http 사용 방법][intellij-http-request]
 
+## Architecture
+
+- [디자인 패턴][design_patterns]
+
+## Book
+
+- [Clean Code 7판][clean-code-7]
+- [Effective Java 3/E][effective-java]
+
+## ETC
+
+- [GeoJson 개념][geojson]
+
 [java]: ./java
 [garbage-collection-type]: ./java/garbage-collection-type.md
 [reflection]: ./java/reflection.md
@@ -205,3 +218,13 @@
 
 [tool]: ./tool
 [intellij-http-request]: ./tool/intellij-http-request.md
+
+[architecture]: ./architecture
+[design_patterns]: https://github.com/mangchhe/design_patterns
+
+[book]: ./book
+[clean-code-7]: https://github.com/BookBundle/book-cleancode
+[effective-java]: https://github.com/BookBundle/book-effective-java
+
+[etc]: ./etc
+[geojson]: https://github.com/mangchhe/mapbox-sample
