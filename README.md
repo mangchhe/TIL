@@ -118,6 +118,10 @@
 
 - [디자인 패턴][design_patterns]
 
+## Software Configuration Management
+
+- [Git Tag][git-tag]
+
 ## Book
 
 - [Clean Code 7판][clean-code-7]
@@ -232,6 +236,9 @@
 
 [architecture]: ./architecture
 [design_patterns]: https://github.com/mangchhe/design_patterns
+
+[scm]: ./scm
+[git-tag]: ./scm/git-tag.md
 
 [book]: ./book
 [clean-code-7]: https://github.com/BookBundle/book-cleancode
