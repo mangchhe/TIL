@@ -51,6 +51,7 @@
 - [동시성 이슈 해결 방법 - Mysql, Redis][concurrency-issue-mysql-redis]
 - [ApplicationContextAware, BeanNameAware][application-context-bean-name-aware]
 - [비동기 처리 여러가지 방법 - ExecutorService, CompletableFuture, @Async][many-async-methods]
+- [TimeZone 설정][spring-timezone-config]
 
 ## JPA
 
@@ -178,6 +179,7 @@
 [concurrency-issue-mysql-redis]: ./spring/concurrency-issue-mysql-redis.md
 [application-context-bean-name-aware]: ./spring/application-context-bean-name-aware.md
 [many-async-methods]: https://github.com/TIL-Repo/spring-study/tree/main/Async
+[spring-timezone-config]: ./spring/spring-timezone-config.md
 
 [jpa]: ./jpa
 [persistence-context]: ./jpa/persistence-context.md
