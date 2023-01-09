@@ -11,6 +11,7 @@
 
 ## Kotlin
 
+- [도서 관리 애플리케이션][kotlin-book-application-project]
 - [코틀린 기본 문법][kotlin-basic]
 - [함수 다루기][kotlin-function]
 - [클래스와 객체][kotlin-class-object]
@@ -97,6 +98,7 @@
 - [Kafka Streams Window Processing][kafka-streams-window-processing]
 - [Kafka Streams Queryable Store][kafka-streams-queryable-store]
 - [Kafka Connect][kafka-connect]
+- [Kafka 내용 정리][kafka-abridgement]
 
 ## Web
 
@@ -148,6 +150,7 @@
 [kotlin-functional-programming]: ./kotlin/kotlin-functional-programming.md
 [kotlin-scope-functions]: ./kotlin/kotlin-scope-functions.md
 [kotlin-special-class]: ./kotlin/kotlin-special-class.md
+[kotlin-book-application-project]: https://github.com/TIL-Repo/book-management-application
 
 [go]: ./go
 [a-tour-of-go]: https://github.com/mangchhe/a-tour-of-go
@@ -222,6 +225,7 @@
 [kafka-streams-window-processing]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-window-processing.md
 [kafka-streams-queryable-store]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-queryable-store.md
 [kafka-connect]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-connect.md
+[kafka-abridgement]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-abridgement.md
 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
