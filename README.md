@@ -120,6 +120,7 @@
 ## Architecture
 
 - [디자인 패턴][design_patterns]
+- [Layered Architecture][layered-architecture]
 
 ## Software Configuration Management
 
@@ -242,6 +243,7 @@
 
 [architecture]: ./architecture
 [design_patterns]: https://github.com/mangchhe/design_patterns
+[layered-architecture]: ./architecture/layered-architecture.md
 
 [scm]: ./scm
 [git-tag]: ./scm/git-tag.md
