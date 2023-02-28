@@ -47,3 +47,7 @@
 - Service 계층이 추가되었고 열려있다.
 - 열려있다는 소리는 Service 계층을 우회해서 바로 Persistence 계층에 접근할 수 있는 것을 의미한다.
 - 필요에 따라 우회할 수 있도록 설계할 수 있고 변경 가능성을 잘 고려한다면 좋은 생산성도 가질 수 있다.
+
+# Reference
+
+- [https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html#sapr_0102_img](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html#sapr_0102_img)
