@@ -124,6 +124,7 @@
 - [Hexagonal Architecture][hexagonal-architecture]
 - [Clean Architecture][clean-architecture]
 - [ㄷㄷㄷ: Domain Driven Design과 적용 사례공유 / if(kakao)2022][ddd-kakao2022]
+- [마이크로서비스 개발을 위한 Domain Driven Design][ddd-pivotal]
 
 ## Software Configuration Management
 
@@ -250,6 +251,7 @@
 [hexagonal-architecture]: ./architecture/hexagonal-architecture.md
 [clean-architecture]: ./architecture/clean-architecture.md
 [ddd-kakao2022]: https://youtu.be/4QHvTeeTsj0
+[ddd-pivotal]: https://www.youtube.com/watch?v=QUMERCN3rZs
 
 [scm]: ./scm
 [git-tag]: ./scm/git-tag.md
