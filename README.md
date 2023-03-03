@@ -121,6 +121,8 @@
 
 - [디자인 패턴][design_patterns]
 - [Layered Architecture][layered-architecture]
+- [Hexagonal Architecture][hexagonal-architecture]
+- [Clean Architecture][clean-architecture]
 
 ## Software Configuration Management
 
@@ -244,6 +246,8 @@
 [architecture]: ./architecture
 [design_patterns]: https://github.com/mangchhe/design_patterns
 [layered-architecture]: ./architecture/layered-architecture.md
+[hexagonal-architecture]: ./architecture/hexagonal-architecture.md
+[clean-architecture]: ./architecture/clean-architecture.md
 
 [scm]: ./scm
 [git-tag]: ./scm/git-tag.md
