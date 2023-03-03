@@ -123,6 +123,7 @@
 - [Layered Architecture][layered-architecture]
 - [Hexagonal Architecture][hexagonal-architecture]
 - [Clean Architecture][clean-architecture]
+- [ㄷㄷㄷ: Domain Driven Design과 적용 사례공유 / if(kakao)2022][ddd-kakao2022]
 
 ## Software Configuration Management
 
@@ -248,6 +249,7 @@
 [layered-architecture]: ./architecture/layered-architecture.md
 [hexagonal-architecture]: ./architecture/hexagonal-architecture.md
 [clean-architecture]: ./architecture/clean-architecture.md
+[ddd-kakao2022]: https://youtu.be/4QHvTeeTsj0
 
 [scm]: ./scm
 [git-tag]: ./scm/git-tag.md
