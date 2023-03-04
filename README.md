@@ -250,7 +250,7 @@
 [layered-architecture]: ./architecture/layered-architecture.md
 [hexagonal-architecture]: ./architecture/hexagonal-architecture.md
 [clean-architecture]: ./architecture/clean-architecture.md
-[ddd-kakao2022]: https://youtu.be/4QHvTeeTsj0
+[ddd-kakao2022]: ./architecture/ddd-kakao2022.md
 [ddd-pivotal]: ./architecture/ddd-pivotal.md
 
 [scm]: ./scm
