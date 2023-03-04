@@ -251,7 +251,7 @@
 [hexagonal-architecture]: ./architecture/hexagonal-architecture.md
 [clean-architecture]: ./architecture/clean-architecture.md
 [ddd-kakao2022]: https://youtu.be/4QHvTeeTsj0
-[ddd-pivotal]: https://www.youtube.com/watch?v=QUMERCN3rZs
+[ddd-pivotal]: ./architecture/ddd-pivotal.md
 
 [scm]: ./scm
 [git-tag]: ./scm/git-tag.md
