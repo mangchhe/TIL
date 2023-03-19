@@ -100,6 +100,10 @@
 - [Kafka Connect][kafka-connect]
 - [Kafka 내용 정리][kafka-abridgement]
 
+## Android
+
+- [안드로이드 앱 개발 특징][android-basic]
+
 ## Web
 
 - [HttpOnly, Secure - Cookie][cookie-httponly-secure]
@@ -231,6 +235,9 @@
 [kafka-streams-queryable-store]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-streams-queryable-store.md
 [kafka-connect]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-connect.md
 [kafka-abridgement]: https://github.com/mangchhe/_TIL/blob/main/kafka/kafka-abridgement.md
+
+[android]: ./android
+[android-basic]: ./android/android-basic.md
 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
