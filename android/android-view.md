@@ -108,3 +108,57 @@ android:layout_height="match_parent"
   - visible : 화면에 출력. default
   - invisible : 미출력되지만, 화면은 차지한다.
   - gone : 미출력되고 화면 자리를 차지하지 않는다.
+
+## TextView
+
+### Attribute
+
+- android:text : 출력할 문자열
+- android:textColor : 문자열 색상
+- android:textSize : 문자열 크기
+- android:textStyle : 문자열 스타일 (bold, italic, normal)
+- android:autoLink : 특정 형태의 문자열에 자동 링크 추가
+  - web, phone, email 등이 있으며 | 기호를 통해 여러 개를 함께 설정할 수 있다.
+- android:maxLines : 긴 문자열의 경우 자동 줄바꿈을 해주는데 특정 행을 고정할 수 있다.
+- android:ellipsize : 출력되지 않은 문자열이 있다는 걸 표시하기 위해 ... 를 넣는다.
+  - start, middle, end
+
+## ImageView
+
+### Attribute
+
+- android:src : 출력할 이미지
+- android:maxWidth, maxHeight : 최대 가로, 세로 크기
+- android:adjustViewBounds : 가로, 세로 길이의 비율을 맞춰준다.
+
+## Button, CheckBox, RadioButton
+
+## EditText
+
+- android:lines : 처음부터 설정한 라인의 수만큼 입력 크기가 출력된다.
+- android:maxLines : 처음에는 한 줄이었다가 설정한 라인의 수만큼 늘어난다.
+- android:inputType : text, number, phone ...
+
+## 뷰 바인딩
+
+- XML 파일에 선언한 뷰 객체를 코드에서 쉽게 이용하는 방법
+- 이전에는 `findViewById()` 함수를 이용해서 가져왔지만 하나의 화면에 여러 개의 뷰가 존재하고 해당 작업은 번거롭다.
+
+```gradle
+android {
+    viewBinding {
+        enabled = true
+    }
+}
+```
+
+- 위와 같이 gradle 파일에 설정해주게 되면 XML 파일에 등록된 뷰 객체를 포함하는 클래스가 자동으로 생성된다.
+- **a**ctivity_**m**ain.xml → **A**ctivity**M**ain**Binding**
+
+```kotlin
+val binding = ActivityMainBinding.inflate(layoutInflater)
+binding.textView
+```
+
+- 레이아웃 XML마다 하나의 바인딩 클래스가 생성되는데 필요 없는 XML도 있을 수 있다.
+- XML 파일 루트 태그에 `tools:viewBindingIgnore=true`라는 속성을 추가하면 해당 XML 파일을 바인딩 클래스를 만들지 않는다.
