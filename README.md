@@ -103,6 +103,7 @@
 ## Android
 
 - [안드로이드 앱 개발 특징][android-basic]
+- [화면 구성 방법 - View][android-view]
 
 ## Web
 
@@ -238,6 +239,7 @@
 
 [android]: ./android
 [android-basic]: ./android/android-basic.md
+[android-view]: ./android/android-view.md
 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
