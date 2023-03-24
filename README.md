@@ -106,6 +106,7 @@
 - [화면 구성 방법 - View][android-view]
 - [레이아웃 종류][android-layout]
 - [사용자 이벤트 처리하기][android-event]
+- [리소스 종류와 특징][android-resource]
 
 ## Web
 
@@ -244,6 +245,7 @@
 [android-view]: ./android/android-view.md
 [android-layout]: ./android/android-layout.md
 [android-event]: ./android/android-event.md
+[android-resource]: ./android/android-resource.md
 
 [web]: ./web
 [cookie-httponly-secure]: ./web/cookie-httponly-secure.md
